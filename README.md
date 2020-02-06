@@ -1,2 +1,2 @@
 # Buddyfinder
-a Laravel project tohelp students find buddies/mentors
+a Laravel project to help students find buddies/mentors in IMD
