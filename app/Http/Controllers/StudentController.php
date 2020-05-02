@@ -10,4 +10,9 @@ class StudentController extends Controller
         $data['students'] = \DB::table('students')->get();
         return view('students/index', $data);
     }
+
+    public function show(\App\Student $student) {
+        $student = $student;
+        dd($student);
+    }
 }

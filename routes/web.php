@@ -31,6 +31,4 @@ Route::get('/logout', function() {
 
 Route::get('/students/', 'StudentController@index');
 
-Route::get('/students/{student}', function() {
-    echo ' Detail profile of a student';
-});
+Route::get('/students/{student}', 'StudentController@show');

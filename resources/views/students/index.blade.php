@@ -138,7 +138,7 @@
                     <h5 class="card-title">{{ $student->firstName }} {{ $student->lastName }}</h5>
                     <p class="card-text">{{ $student->bio }}</p>
                     <p class="card-text"><small class="text-muted">Location here</small></p>
-                    <button class="btn btn-primary"><a href="/student/{{ $student->id }}">View
+                    <button class="btn btn-primary"><a href="/students/{{ $student->id }}">View
                             Profile</a></button>
                     {{-- <?php
                         if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
