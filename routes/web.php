@@ -36,3 +36,8 @@ Route::get('/students/', function() {
 Route::get('/students/{student}', function() {
     echo ' Detail profile of a student';
 });
+
+Route::get('/users', function() {
+    $user = \DB::table('users')->get();
+    dd($user);
+});
