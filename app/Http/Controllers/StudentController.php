@@ -12,7 +12,7 @@ class StudentController extends Controller
     }
 
     public function show(\App\Student $student) {
-        $student = $student;
-        dd($student);
+        $data['student'] = \DB::table('students')->where('id', $student->id)->first();
+        return view('students/detail', $data);
     }
 }
