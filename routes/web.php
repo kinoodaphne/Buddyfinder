@@ -22,22 +22,15 @@ Route::get('/login', function() {
 });
 
 Route::get('/register', function() {
-    echo 'register page comes here';
+    return view('register');
 });
 
 Route::get('/logout', function() {
     echo 'logout page comes here, redirect back to login page';
 });
 
-Route::get('/students/', function() {
-    echo 'An overview of all students comes here';
-});
+Route::get('/students/', 'StudentController@index');
 
 Route::get('/students/{student}', function() {
     echo ' Detail profile of a student';
-});
-
-Route::get('/users', function() {
-    $user = \DB::table('users')->get();
-    dd($user);
 });
