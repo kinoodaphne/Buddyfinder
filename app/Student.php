@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $with = ['friends'];
-
     public function friends() {
         return $this->hasMany('App\Friend', 'user_id_1');
     }

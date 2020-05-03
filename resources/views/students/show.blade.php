@@ -63,6 +63,10 @@
 </nav>
     <div class="container">
         <h1>{{ $student->firstName }} {{ $student->lastName }}</h1>
+        <h2>Friends</h2>
+        @foreach ($student->friends as $friend)
+            <div>{{ $friend->user_one }}</div>
+        @endforeach
         <hr>
         <div class="row">
             <!-- left column -->
@@ -102,14 +106,20 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Location:</label>
-                    <div class="col-md-8">
+                    <label class="col-lg-3 control-label">Location:</label>
+                    <div class="col-lg-8">
                         <input class="form-control" type="text" value="Location here" name="location" id="location">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Biography:</label>
-                    <div class="col-md-8">
+                    <label class="col-lg-3 control-label">Study field:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="{{ $student->study_field }}" name="study_field" id="study_field">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Biography:</label>
+                    <div class="col-lg-8">
                         <textarea class="form-control" rows="8" id="biography" name="biography">{{ $student->bio }}</textarea>
                     </div>
                 </div>
