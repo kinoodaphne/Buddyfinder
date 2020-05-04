@@ -66,6 +66,16 @@
     background-color: #000;
     color: #fff;
 }
+.link {
+  text-decoration: none;
+  color: #000;
+
+  :hover {
+      text-decoration: none;
+      color: #000;
+  }
+}
+
 .navbar.bg-light .form-control {
   border-radius: 4.25rem;
 }
