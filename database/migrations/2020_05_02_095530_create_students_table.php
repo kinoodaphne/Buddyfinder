@@ -15,21 +15,21 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('year');
-            $table->string('study_field');
-            $table->string('music');
-            $table->string('hobbies');
-            $table->string('series');
-            $table->string('gaming');
-            $table->string('books');
-            $table->string('travel');
-            $table->string('buddy')->default('buddy');
-            $table->text('bio');
-            $table->string('profile_picture')->default('');
+            $table->string('location')->nullable();
+            $table->string('year')->nullable();
+            $table->string('study_field')->nullable();
+            $table->string('music')->nullable();
+            $table->string('hobbies')->nullable();
+            $table->string('series')->nullable();
+            $table->string('gaming')->nullable();
+            $table->string('books')->nullable();
+            $table->string('travel')->nullable();
+            $table->string('buddy')->nullable()->default('buddy');
+            $table->text('bio')->nullable();
+            $table->string('profile_picture')->nullable()->default('');
             $table->timestamps();
         });
     }

@@ -118,7 +118,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $student->firstName }} {{ $student->lastName }}</h5>
                 <p class="card-text">{{ $student->bio }}</p>
-                <p class="card-text"><small class="text-muted">Location here</small></p>
+                <p class="card-text"><small class="text-muted">{{ $student->location }}</small></p>
                 <button class="btn btn-primary"><a href="/students/{{ $student->id }}">View
                         Profile</a></button>
                 {{-- <?php

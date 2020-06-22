@@ -71,6 +71,8 @@
         <h3>Personal info</h3>
 
         <form role="form" method="post" action="/students" enctype="multipart/form-data">
+          {{ csrf_field() }}
+
           <!-- left column -->
           <div class="col-md-3">
             <div class="text-center">
@@ -100,12 +102,6 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-3 control-label">Username:</label>
-            <div class="col-md-8">
-              <input class="form-control" type="text" value="" name="username" id="username">
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-md-3 control-label">Location:</label>
             <div class="col-md-8">
               <input class="form-control" type="text" value="" name="location" id="location">
@@ -114,7 +110,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Biography:</label>
             <div class="col-md-8">
-              <textarea class="form-control" rows="8" id="biography" name="biography"></textarea>
+              <textarea class="form-control" rows="8" id="bio" name="bio"></textarea>
             </div>
           </div>
 
