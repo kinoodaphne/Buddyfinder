@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::post('/students', 'StudentController@store');
+
 Route::get('/', 'StudentController@index');
 
 Route::get('/login', function() {
@@ -29,4 +32,8 @@ Route::get('/logout', function() {
 
 Route::get('/students/', 'StudentController@index');
 
+Route::get('/students/create', 'StudentController@create');
+
 Route::get('/students/{student}', 'StudentController@show');
+
+Route::get('/search', 'StudentController@search');

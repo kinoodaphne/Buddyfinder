@@ -15,4 +15,19 @@ class StudentController extends Controller
         $data['student'] = \App\Student::where('id', $student)->with('friends')->first();
         return view('students/show', $data);
     }
+
+    public function create()
+    {
+        return view('students/create');
+    }
+
+    public function store(Request $request)
+    {
+        //
+    }
+
+    public function search() {
+        $data['students'] = \DB::table('students')->get();
+        return view('search', $data);
+    }
 }
