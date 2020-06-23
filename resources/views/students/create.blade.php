@@ -66,7 +66,7 @@
 
     <div class="tab-content col-lg-10" id="v-pills-tabContent">
       <!-- edit form column -->
-      <div class="col-lg-8 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel"
+      <div class="col-lg-5 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel"
         aria-labelledby="v-pills-home-tab">
         <h3>Personal info</h3>
 
@@ -123,75 +123,74 @@
             </div>
           </div>
         </form>
-      </div>
 
-      <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-profile" role="tabpanel"
-        aria-labelledby="v-pills-profile-tab">
-        <h3>Interests</h3>
-        <form method=" post" action="changePassword">
-          <div class="form-group">
-            <label class="col-md-6 control-label">Current password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" name="currentPassword" id="password">
+        <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-profile" role="tabpanel"
+          aria-labelledby="v-pills-profile-tab">
+          <h3>Interests</h3>
+          <form method=" post" action="changePassword">
+            <div class="form-group">
+              <label class="col-md-6 control-label">Current password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" name="currentPassword" id="password">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">New password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPassword">
+            <div class="form-group">
+              <label class="col-md-6 control-label">New password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" id="password" name="newPassword">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">Confirm password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+            <div class="form-group">
+              <label class="col-md-6 control-label">Confirm password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label"></label>
-            <div class="col-md-10">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
+            <div class="form-group">
+              <label class="col-md-6 control-label"></label>
+              <div class="col-md-10">
+                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <span></span>
+                <input type="submit" class="btn btn-default" value="Cancel">
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
 
-      <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-password" role="tabpanel"
-        aria-labelledby="v-pills-password-tab">
-        <h3>Password</h3>
-        <form method=" post" action="changePassword">
-          <div class="form-group">
-            <label class="col-md-6 control-label">Current password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" name="currentPassword" id="password">
+        <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-password" role="tabpanel"
+          aria-labelledby="v-pills-password-tab">
+          <h3>Password</h3>
+          <form method=" post" action="changePassword">
+            <div class="form-group">
+              <label class="col-md-6 control-label">Current password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" name="currentPassword" id="password">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">New password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPassword">
+            <div class="form-group">
+              <label class="col-md-6 control-label">New password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" id="password" name="newPassword">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">Confirm password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+            <div class="form-group">
+              <label class="col-md-6 control-label">Confirm password:</label>
+              <div class="col-md-10">
+                <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label"></label>
-            <div class="col-md-10">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
+            <div class="form-group">
+              <label class="col-md-6 control-label"></label>
+              <div class="col-md-10">
+                <input type="submit" class="btn btn-primary" value="Save Changes">
+                <span></span>
+                <input type="submit" class="btn btn-default" value="Cancel">
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
 
+      </div>
     </div>
   </div>
-</div>
-@endsection
+  @endsection
