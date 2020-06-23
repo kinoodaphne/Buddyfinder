@@ -29,7 +29,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students/create');
+        return view('register');
     }
 
     /**
@@ -57,7 +57,7 @@ class StudentController extends Controller
         $student->bio = $request->input('bio'); 
         
         $student->save();
-        return redirect('/students');
+        return redirect('/');
     }
 
     /**

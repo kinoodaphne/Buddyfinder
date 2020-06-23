@@ -11,7 +11,8 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form method="post">
+            <form method="post" action="/students">
+                {{ csrf_field() }}
                 {{-- <div class="form__error">
                         <p> <?php echo $error ?> </p>
                     </div> --}}
@@ -28,10 +29,6 @@
                     <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email"
                         name="email">
                     <div id="uname_response"></div>
-                </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" placeholder="doejohn" id="username" name="username">
                 </div>
                 <div class="form-group">
                     <label>Password</label>
