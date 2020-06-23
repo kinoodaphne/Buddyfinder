@@ -1,0 +1,35 @@
+.link {
+  text-decoration: none;
+  color: #000;
+
+  :hover {
+      text-decoration: none;
+      color: #000;
+  }
+}
+
+.navbar.bg-light .form-control {
+  border-radius: 4.25rem;
+}
+
+.dropdown-menu {
+  margin-right: 5px;
+}
+
+.badge {
+  background: #fff;
+  display: inline-block;
+  padding: 0 5px;
+  margin-left: 3px;
+  color: #000;
+  border-radius: 20px;
+}
+
+.redBadge {
+  background-color: #e3342f;
+  color: #fff;
+  display: inline-block;
+  padding: 0 5px;
+  margin-left: 3px;
+  border-radius: 20px;
+}

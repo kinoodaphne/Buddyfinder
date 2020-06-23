@@ -1,1 +1,84 @@
 //
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+
+@import url("./login-register.scss");
+@import url("./nav.scss");
+@import url("./search.scss");
+@import url("./editProfile.scss");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    background-color: #f8f5f2;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+
+    :hover {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #078080;
+    border: none;
+
+    :hover,
+    :focus {
+        background-color: #0a5a5a;
+    }
+}
+
+.check-buddies {
+    color: black;
+    text-decoration: underline;
+}
+
+.container {
+    padding: 0px;
+    margin: 0 auto;
+}
+
+.container-top,
+.container-fluid {
+    margin-top: 15px;
+}
+
+.col-3 {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+.row-table {
+    margin-bottom: 25px;
+}
+
+.img-container {
+    width: 292px;
+    height: 292px;
+    overflow: hidden;
+}
+
+.stretchy {
+    width: 100%;
+}
