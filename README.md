@@ -17,19 +17,19 @@ A Laravel app designed and developed for a final school project. The assignment 
 
 As a user I want to:
 
-| Done | Task           | Time required | Current Status |
-|------|----------------|---------------|----------------|
-| [] | register   | > 5 hours  | in progress |
-| [] | login   | > 5 hours  | in progress | 
-| [] | see all students   | > 5 hours  | in progress |
-| [] | detailed profile   | > 5 hours  | in progress |
-| [] | view my profile   | > 5 hours  | in progress |
-| [] | edit my profile   | > 5 hours  | in progress |
-| [] | search by name   | > 5 hours  | in progress |
-| [] | filter interests   | > 5 hours  | in progress |
-| [] | suggested matches   | > 5 hours  | in progress |
-| [] | send a friend request   | > 5 hours  | in progress |
-| [] | view friend requests   | > 5 hours  | in progress |
-| [] | view friends   | > 5 hours  | in progress |
-| [] | buddy or searching for a buddy   | > 5 hours  | in progress |
-| [] | chat   | > 5 hours  | in progress |
+| Done | Task           | Current Status |
+|------|----------------|----------------|
+| [] | register   | in progress |
+| [] | login   | in progress | 
+| [] | see all students   | in progress |
+| [] | detailed profile   | in progress |
+| [] | view my profile   | in progress |
+| [] | edit my profile   | in progress |
+| [] | search by name   | in progress |
+| [] | filter interests   | in progress |
+| [] | suggested matches   | in progress |
+| [] | send a friend request   | in progress |
+| [] | view friend requests   | in progress |
+| [] | view friends   | in progress |
+| [] | buddy or searching for a buddy   | in progress |
+| [] | chat   | in progress |
