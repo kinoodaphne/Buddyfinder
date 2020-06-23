@@ -12,9 +12,16 @@
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
             <form method="post">
-                {{-- <div class="form__error">
-                            <p> <?php echo $error ?> </p>
-                        </div> --}}
+                @if( $errors->any() )
+                @component('components/alert')
+                @slot('type', 'danger')
+                <ul>
+                    @foreach($errors->all() as $e)
+                    <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
+                @endcomponent
+                @endif
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email"

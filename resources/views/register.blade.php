@@ -12,10 +12,18 @@
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
             <form method="post" action="/students">
+
                 {{ csrf_field() }}
-                {{-- <div class="form__error">
-                        <p> <?php echo $error ?> </p>
-                    </div> --}}
+                @if( $errors->any() )
+                @component('components/alert')
+                @slot('type', 'danger')
+                <ul>
+                    @foreach($errors->all() as $e)
+                    <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
+                @endcomponent
+                @endif
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="John" id="firstName" name="firstName">

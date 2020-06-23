@@ -40,6 +40,12 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $request->validate([
+            'firstName' => 'required|max:200',
+            'lastName' => 'required',
+            'email' => 'required',
+        ]);
+
         $student = new \App\Student();
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
