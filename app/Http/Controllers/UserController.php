@@ -28,8 +28,9 @@ class UserController extends Controller
     public function handleLogin(Request $request) {
 
         $credentials = $request->only(['email', 'password']);
-        $result = \Auth::attempt($credentials);
-        dd($result);
-        return redirect('/user/login');
+        if ( \Auth::attempt($credentials) ){
+            return redirect('/students');
+        };
+        
     }
 }
