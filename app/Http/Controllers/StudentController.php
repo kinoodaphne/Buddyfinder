@@ -46,6 +46,8 @@ class StudentController extends Controller
             'email' => 'required',
         ]);
 
+        $request->flash();
+
         $student = new \App\Student();
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
@@ -63,6 +65,18 @@ class StudentController extends Controller
         $student->bio = $request->input('bio'); 
         
         $student->save();
+
+        // Message will be displayed only once
+        $request->session()->flash('message', 'Student saved');
+
+        /**
+         * Message will be displayed all the time
+         * $request->session()->put('message', 'Permament message');
+         * 
+         * Message will be removed
+         * $request->session()->pull('message', 'Permament message');
+         */
+
         return redirect('/');
     }
 

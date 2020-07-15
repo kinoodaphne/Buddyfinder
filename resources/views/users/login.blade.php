@@ -11,7 +11,13 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form method="post">
+            <form method="post" action="">
+
+                @auth
+                <div class="alert alert-info">We are logged in!</div>
+                @endauth
+
+                {{ csrf_field() }}
                 @if( $errors->any() )
                 @component('components/alert')
                 @slot('type', 'danger')

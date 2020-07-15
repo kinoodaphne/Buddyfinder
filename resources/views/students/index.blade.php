@@ -108,6 +108,9 @@
             <br />
         </div>
     </div>
+    @if($flash = session('message'))
+    <div class="alert alert-success">{{ $flash }}</div>
+    @endif
     <div class="card-deck row row-table">
         @foreach ($students as $student)
 
