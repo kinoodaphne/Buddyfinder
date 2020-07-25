@@ -4,7 +4,6 @@
     <?php endif; ?> --}}
 
 @component('components/nav')
-
 @endcomponent
 
 @component('components/search')
