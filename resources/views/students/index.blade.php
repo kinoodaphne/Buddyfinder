@@ -4,7 +4,7 @@
     <?php endif; ?> --}}
 
 @component('components/nav')
-<a class="navbar-brand" href="index">
+<a class="navbar-brand" href="/">
     <img src="{{ asset('images/rocket.png') }}" width="30" height="30" class="d-inline-block align-top" alt="IMDbuddy">
 </a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -16,7 +16,7 @@
     <div class="mr-auto"></div>
     <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active">
-            <a class="nav-link" href="index">Home</a>
+            <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="buddies">Buddies</a>
@@ -34,7 +34,7 @@
         <li class="nav-item active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ session('name') }}
+                FirstName LastName
             </a>
             <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="myProfile">View profile</a>
