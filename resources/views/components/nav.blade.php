@@ -39,7 +39,7 @@
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="myProfile">View profile</a>
                     <a class="dropdown-item" href="editProfile">Edit profile</a>
-                    <a class="dropdown-item" href="logout">Log out</a>
+                    <a class="dropdown-item" href="/user/logout">Log out</a>
                 </div>
 
             </li>

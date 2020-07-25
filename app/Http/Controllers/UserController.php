@@ -47,4 +47,11 @@ class UserController extends Controller
 
         return redirect()->route('login')->withErrors('Your email or password was incorrect!');        
     }
+
+    public function logout() {
+        \Auth::logout();
+        \Session::flush();
+
+        return redirect('user/login');
+    }
 }

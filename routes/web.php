@@ -28,10 +28,13 @@ Route::get('/students/{student}', 'StudentController@show');
 
 Route::get('/search', 'StudentController@search');
 
+
 // MANUALLY IMPLEMENTING AUTHENTICATION
 Route::get('/user/register', 'UserController@register');
 Route::post('/user/register', 'UserController@handleRegister');
 Route::get('/user/login', 'UserController@login');
 Route::post('/user/login', 'UserController@handleLogin');
+
+Route::get('/user/logout', 'UserController@logout');
 
 Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');
