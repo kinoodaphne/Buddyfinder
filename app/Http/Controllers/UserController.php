@@ -29,6 +29,8 @@ class UserController extends Controller
 
         $credentials = $request->only(['email', 'password']);
         if ( \Auth::attempt($credentials) ){
+            $user = new \App\User();
+            $request->session()->put('name', $user->name);
             return redirect('/students');
         };
         

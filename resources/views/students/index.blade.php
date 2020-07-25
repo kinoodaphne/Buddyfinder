@@ -34,7 +34,7 @@
         <li class="nav-item active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                FirstName LastName
+                {{ session('name') }}
             </a>
             <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="myProfile">View profile</a>

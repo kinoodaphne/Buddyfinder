@@ -19,7 +19,7 @@ Route::post('/students/{student}', 'StudentController@edit');
 
 Route::get('/', 'StudentController@index');
 
-Route::get('/students/', 'StudentController@index');
+Route::get('/students', 'StudentController@index');
 
 Route::get('/students/create', 'StudentController@create');
 Route::get('/student/{student}/edit', 'StudentController@edit');
@@ -33,3 +33,5 @@ Route::get('/user/register', 'UserController@register');
 Route::post('/user/register', 'UserController@handleRegister');
 Route::get('/user/login', 'UserController@login');
 Route::post('/user/login', 'UserController@handleLogin');
+
+Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');
