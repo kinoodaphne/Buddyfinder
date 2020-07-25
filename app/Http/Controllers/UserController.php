@@ -18,7 +18,12 @@ class UserController extends Controller
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
-        return redirect('/user/register');
+        $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first()->name;
+        $name = $data['user'];
+
+        $request->session()->put('name', $name);
+
+        return redirect('/user/login');
     }
 
     public function login() {
