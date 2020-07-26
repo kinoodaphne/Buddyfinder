@@ -20,11 +20,6 @@
     </div>
     <!-- edit form column -->
     <div class="col-md-8 personal-info">
-        {{-- <?php if (isset($status)) : ?>
-            <div class="alert alert-info alert-dismissable">
-                <?php echo $status; ?>
-            </div>
-        <?php endif; ?> --}}
         <h3>Personal info</h3>
 
 

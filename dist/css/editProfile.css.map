@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,YAAY,AAAC,CACT,OAAO,CAAE,OAAO,CACnB",
+    "mappings": "AAAA,AAAA,YAAY,AAAC,CACT,OAAO,CAAE,OAAO,CACnB,AAED,AAAA,KAAK,AAAC,CACL,UAAU,CAAE,OAAO,CACnB",
     "sources": [
         "../../resources/sass/editProfile.scss"
     ],
