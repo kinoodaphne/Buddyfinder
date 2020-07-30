@@ -18,8 +18,8 @@ class UserController extends Controller
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
-        $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first()->name;
-        $name = $data['user'];
+        $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
+        $name = $data['user']->name;
 
         $request->session()->put('name', $name);
 
@@ -37,11 +37,13 @@ class UserController extends Controller
         if ( \Auth::attempt($credentials) ){
             $user = auth()->user();
 
-            $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first()->name;
+            $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
 
-            $name = $data['user'];
+            $name = $data['user']->name;
+            $uid = $data['user']->id;
 
             $request->session()->put('name', $name);
+            $request->session()->put('uid', $uid);
             /**
              * ->with is the same as flash
              * return redirect('/')->with('name', $name);
