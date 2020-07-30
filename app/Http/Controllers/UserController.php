@@ -13,7 +13,7 @@ class UserController extends Controller
     public function handleRegister(Request $request) {
         $user = new \App\User();
         $user->name = $request->input('firstName');
-        // $user->lastName = $request->input('lastName');
+        $user->lastName = $request->input('lastName');
         $user->email = $request->input('email');
         $user->password = \Hash::make($request->input('password'));
         $user->save();
@@ -96,7 +96,7 @@ class UserController extends Controller
     {
         $validation = $request->validate([
             'firstName' => 'required|max:200',
-            'lastName' => 'required',
+            'lastName' => 'required|max:200',
             'email' => 'required',
         ]);
 
@@ -142,7 +142,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        $data['user'] = \App\User::where('id', $id)->first();
         return view('students/show', $data);
     }
 
@@ -154,7 +155,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        $data['user'] = \App\User::where('id', $id)->first();
         return view('students/edit', $data);
     }
 
@@ -167,7 +169,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        $data['user'] = \App\User::where('id', $id)->first();
         return view('students/edit', $data);
 
         $id = new \App\User();

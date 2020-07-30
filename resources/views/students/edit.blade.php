@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container-fluid">
-  <h1>{{ $user->firstName }} {{ $user->lastName }}</h1>
+  <h1>{{ $user->name }} {{ $user->lastName }}</h1>
   <hr>
   <div class="row">
 

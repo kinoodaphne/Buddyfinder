@@ -27,7 +27,7 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->firstName }}" name="firstName"
+                <input class="form-control" type="text" value="{{ $user->name }}" name="firstName"
                     id="firstName">
             </div>
         </div>
