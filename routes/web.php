@@ -14,19 +14,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/students', 'StudentController@store');
-Route::post('/students/{student}', 'StudentController@edit');
+// Route::post('/students', 'StudentController@store');
+// Route::post('/students/{student}', 'StudentController@edit');
 
-Route::get('/', 'StudentController@index');
+// Route::get('/', 'StudentController@index');
 
-Route::get('/students', 'StudentController@index');
+// Route::get('/students', 'StudentController@index');
 
-Route::get('/students/create', 'StudentController@create');
-Route::get('/student/{student}/edit', 'StudentController@edit');
+// Route::get('/students/create', 'StudentController@create');
+// Route::get('/student/{student}/edit', 'StudentController@edit');
 
-Route::get('/students/{student}', 'StudentController@show');
+// Route::get('/students/{student}', 'StudentController@show');
 
-Route::get('/search', 'StudentController@search');
+// Route::get('/search', 'StudentController@search');
+
+Route::post('/users', 'UserController@store');
+Route::post('/users/{student}', 'UserController@edit');
+
+Route::get('/', 'UserController@index');
+
+Route::get('/users', 'UserController@index');
+
+Route::get('/users/create', 'UserController@create');
+Route::get('/users/{user}/edit', 'UserController@edit');
+
+Route::get('/users/{user}', 'UserController@show');
+
+Route::get('/search', 'UserController@search');
 
 
 // MANUALLY IMPLEMENTING AUTHENTICATION

@@ -71,17 +71,17 @@
     <div class="alert alert-success">{{ $flash }}</div>
     @endif
     <div class="card-deck row row-table">
-        @foreach ($students as $student)
+        @foreach ($users as $user)
 
         <div class="col-3">
             <div class="img-container">
-                <img src="{{ $student->profile_picture }}" class="card-img-top stretchy" alt="...">
+                <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ $student->firstName }} {{ $student->lastName }}</h5>
-                <p class="card-text">{{ $student->bio }}</p>
-                <p class="card-text"><small class="text-muted">{{ $student->location }}</small></p>
-                <button class="btn btn-primary"><a href="/students/{{ $student->id }}">View
+                <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
+                <p class="card-text">{{ $user->bio }}</p>
+                <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
+                <button class="btn btn-primary"><a href="/users/{{ $user->id }}">View
                         Profile</a></button>
                 {{-- <?php
                         if ($friend->checkIfFriends($user->getId(), $profile['id'])) {

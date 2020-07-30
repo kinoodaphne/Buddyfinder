@@ -4,9 +4,9 @@
 @endcomponent
 
 @section('content')
-<h1>{{ $student->firstName }} {{ $student->lastName }}</h1>
+<h1>{{ $user->name }} {{ $user->lastName }}</h1>
 {{-- <h2>Friends</h2>
- @foreach ($student->friends as $friend)
+ @foreach ($user->friends as $friend)
  <div>{{ $friend->user_one }}</div>
 @endforeach --}}
 <hr>
@@ -14,7 +14,7 @@
     <!-- left column -->
     <div class="col-md-2">
         <div class="text-center">
-            <img src="{{ $student->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
+            <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
                 name="avatar" width="150" height="150">
         </div>
     </div>
@@ -27,40 +27,40 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $student->firstName }}" name="firstName"
+                <input class="form-control" type="text" value="{{ $user->firstName }}" name="firstName"
                     id="firstName">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $student->lastName }}" name="lastName" id="lastName">
+                <input class="form-control" type="text" value="{{ $user->lastName }}" name="lastName" id="lastName">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $student->email }}" name="email" id="email">
+                <input class="form-control" type="text" value="{{ $user->email }}" name="email" id="email">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Location:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $student->location }}" name="location" id="location">
+                <input class="form-control" type="text" value="{{ $user->location }}" name="location" id="location">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Study field:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $student->study_field }}" name="study_field"
+                <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field"
                     id="study_field">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Biography:</label>
             <div class="col-lg-8">
-                <textarea class="form-control" rows="8" id="biography" name="biography">{{ $student->bio }}</textarea>
+                <textarea class="form-control" rows="8" id="biography" name="biography">{{ $user->bio }}</textarea>
             </div>
         </div>
     </div>
