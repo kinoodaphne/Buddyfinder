@@ -1,8 +1,39 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Bootstrap
+// @import "~bootstrap/scss/bootstrap";
 
-// Variables
-@import 'variables';
+// Views
+@import "editProfile";
+@import "login-register";
+@import "nav";
+@import "search";
 
-// // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+* {
+    font-family: "Nunito";
+}
+
+.container-card {
+	padding-bottom: 64px;
+}
+
+.nav {
+    .nav-link {
+        color: black !important;
+    }
+
+    .active {
+        color: white !important;
+    }
+}
+
+a {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #078080;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #0a5a5a;
+}

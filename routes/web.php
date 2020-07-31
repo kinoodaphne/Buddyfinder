@@ -14,26 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
- * Show users on the index page
- */
-Route::get('/', 'UserController@index');
-
-/**
- * Show a specific user page
- */
-Route::get('/users/{user}', 'UserController@show');
-
-
-/**
- * Show the edit page of your profile and update your profile
- */
-Route::get('/users/{user}/edit', 'UserController@edit');
-// Route::post('/users/{user}', 'UserController@update');
-// Route::post('/users/{user}/edit', 'UserController@update');
-
-// Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');
-
-/**
  * Registering a user to the platform
  */
 Route::get('/user/register', 'UserController@register');
@@ -50,3 +30,24 @@ Route::post('/user/login', 'UserController@handleLogin');
  * Logging a user out of the platform
  */
 Route::get('/user/logout', 'UserController@logout');
+
+/**
+ * Show users on the index page
+ */
+Route::get('/', 'UserController@index');
+
+/**
+ * Show a specific user page
+ */
+Route::get('/users/{user}', 'UserController@show');
+
+
+/**
+ * Show the edit page of your profile and update your profile
+ */
+Route::get('/users/{user}/edit', 'UserController@edit');
+
+// Route::post('/users/{user}', 'UserController@update');
+// Route::post('/users/{user}/edit', 'UserController@update');
+
+// Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');

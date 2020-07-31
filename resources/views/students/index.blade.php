@@ -73,16 +73,22 @@
     <div class="card-deck row row-table">
         @foreach ($users as $user)
 
-        <div class="col-3">
-            <div class="img-container">
-                <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
+        <div class="col">
+            <div class="card-container">
+                <!-- <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="..."> -->
+                <img src="https://via.placeholder.com/400x400.png" class="card-img-top" alt="...">
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
-                <p class="card-text">{{ $user->bio }}</p>
                 <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
-                <button class="btn btn-primary"><a href="/users/{{ $user->id }}">View
-                        Profile</a></button>
+                <p class="card-text">Intresses:</p>
+                <p class="card-text">Films</p>
+                <p class="card-text">Racing</p>
+                <p class="card-text">Development</p>
+                <p class="card-text">3 IMD</p>
+
+                <a href="/users/{{ $user->id }}"><button class="btn btn-primary">View Profile</button></a>
+
                 {{-- <?php
                         if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
                             echo '';

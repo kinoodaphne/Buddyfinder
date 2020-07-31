@@ -26,12 +26,14 @@
           {{ csrf_field() }}
 
           <!-- left column -->
-          <div class="col-md-9">
-            <div class="text-center">
-              <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar" width="150" height="150">
-              <h6>Upload a different photo...</h6>
+          <div class="form-group pt-1">
+            <div class="col-md-9">
+              <div class="text-center">
+                <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar" width="150" height="150">
+                <h6>Upload a different photo...</h6>
 
-              <input type="file" class="form-control" name="avatar" id="avatar">
+                <input type="file" class="form-control" name="avatar" id="avatar">
+              </div>
             </div>
           </div>
           <div class="form-group">

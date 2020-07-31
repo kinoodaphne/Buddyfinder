@@ -7,6 +7,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
         <div class="mr-auto"></div>
         <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item active">
