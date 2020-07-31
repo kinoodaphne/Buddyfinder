@@ -13,44 +13,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-// Route::post('/students', 'StudentController@store');
-// Route::post('/students/{student}', 'StudentController@edit');
-
-// Route::get('/', 'StudentController@index');
-
-// Route::get('/students', 'StudentController@index');
-
-// Route::get('/students/create', 'StudentController@create');
-// Route::get('/student/{student}/edit', 'StudentController@edit');
-
-// Route::get('/students/{student}', 'StudentController@show');
-
-// Route::get('/search', 'StudentController@search');
-
-Route::post('/users', 'UserController@store');
-
+/**
+ * Show users on the index page
+ */
 Route::get('/', 'UserController@index');
 
-Route::get('/users', 'UserController@index');
-
-Route::get('/users/create', 'UserController@create');
-Route::get('/users/{user}/edit', 'UserController@edit');
-
-Route::post('/users/{user}', 'UserController@update');
-// Route::post('/users/{user}/edit', 'UserController@update');
-
+/**
+ * Show a specific user page
+ */
 Route::get('/users/{user}', 'UserController@show');
 
-Route::get('/search', 'UserController@search');
 
+/**
+ * Show the edit page of your profile and update your profile
+ */
+Route::get('/users/{user}/edit', 'UserController@edit');
+// Route::post('/users/{user}', 'UserController@update');
+// Route::post('/users/{user}/edit', 'UserController@update');
 
-// MANUALLY IMPLEMENTING AUTHENTICATION
+// Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');
+
+/**
+ * Registering a user to the platform
+ */
 Route::get('/user/register', 'UserController@register');
 Route::post('/user/register', 'UserController@handleRegister');
+Route::post('/users', 'UserController@store');
+
+/**
+ * Loggin a user into the platform
+ */
 Route::get('/user/login', 'UserController@login');
 Route::post('/user/login', 'UserController@handleLogin');
 
+/**
+ * Logging a user out of the platform
+ */
 Route::get('/user/logout', 'UserController@logout');
-
-Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');

@@ -165,8 +165,14 @@ class UserController extends Controller
     public function edit($id)
     {
         // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
-        $data['user'] = \App\User::where('id', $id)->first();
-        return view('students/edit', $data);
+        // $id = session('uid');
+
+        if ($id != session('uid')) {
+            return redirect('/');
+        } else {
+            $data['user'] = \App\User::where('id', $id)->first();
+            return view('students/edit', $data);
+        }
     }
 
     /**
