@@ -29,7 +29,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/search', 'StudentController@search');
 
 Route::post('/users', 'UserController@store');
-Route::post('/users/{student}', 'UserController@edit');
 
 Route::get('/', 'UserController@index');
 
@@ -37,6 +36,9 @@ Route::get('/users', 'UserController@index');
 
 Route::get('/users/create', 'UserController@create');
 Route::get('/users/{user}/edit', 'UserController@edit');
+
+Route::post('/users/{user}', 'UserController@update');
+// Route::post('/users/{user}/edit', 'UserController@update');
 
 Route::get('/users/{user}', 'UserController@show');
 

@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function register() {
+    public function register()
+    {
         return view('users/register');
     }
 
-    public function handleRegister(Request $request) {
+    public function handleRegister(Request $request)
+    {
         $user = new \App\User();
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
@@ -26,15 +28,17 @@ class UserController extends Controller
         return redirect('/user/login');
     }
 
-    public function login() {
+    public function login()
+    {
         return view('users/login');
     }
 
-    public function handleLogin(Request $request) {
+    public function handleLogin(Request $request)
+    {
 
         $credentials = $request->only(['email', 'password']);
 
-        if ( \Auth::attempt($credentials) ){
+        if (\Auth::attempt($credentials)) {
             $user = auth()->user();
 
             $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
@@ -52,17 +56,19 @@ class UserController extends Controller
             return redirect('/');
         };
 
-        return redirect()->route('login')->withErrors('Your email or password was incorrect!');        
+        return redirect()->route('login')->withErrors('Your email or password was incorrect!');
     }
 
-    public function logout() {
+    public function logout()
+    {
         \Auth::logout();
         \Session::flush();
 
         return redirect('user/login');
     }
 
-    public function search() {
+    public function search()
+    {
         $data['users'] = \DB::table('users')->get();
         return view('search', $data);
     }
@@ -117,9 +123,10 @@ class UserController extends Controller
         $user->gaming = $request->input('gaming');
         $user->books = $request->input('books');
         $user->travel = $request->input('travel');
-        $user->buddy = $request->input('buddy'); 
-        $user->bio = $request->input('bio'); 
-        
+        $user->buddy = $request->input('buddy');
+        $user->bio = $request->input('bio');
+        $user->password = $request->input('password');
+
         $user->save();
 
         // Message will be displayed only once
@@ -188,10 +195,11 @@ class UserController extends Controller
         $id->gaming = $request->input('gaming');
         $id->books = $request->input('books');
         $id->travel = $request->input('travel');
-        $id->buddy = $request->input('buddy'); 
-        $id->bio = $request->input('bio'); 
-        
-        $id->save();
+        $id->buddy = $request->input('buddy');
+        $id->bio = $request->input('bio');
+        // $id->password = $request->input('password'); 
+
+        $id->save($request->all());
         return redirect('/students/{{$id}}');
     }
 
@@ -204,7 +212,7 @@ class UserController extends Controller
     public function destroy(Request $request, $id)
     {
         // $user = \Auth::user();
-        $user = \App\User::find( $request->user_id );
+        $user = \App\User::find($request->user_id);
 
         $user->delete();
         $request->session()->flash('message', 'Student has been deleted');
