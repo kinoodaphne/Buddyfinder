@@ -80,8 +80,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
-        return view('students/index', $data);
+        if (session('uid') == true) {
+            $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            return view('students/index', $data);
+        } else {
+            return redirect('/user/login');
+        }
     }
 
     /**
