@@ -46,6 +46,6 @@ Route::get('/users/{user}', 'UserController@show');
  * Show the edit page of your profile and update your profile
  */
 Route::get('/users/edit/{user}', 'UserController@edit');
-Route::put('/users/update/{user}', 'UserController@update');
+Route::patch('/users/update/{user}', 'UserController@update');
 
 // Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');

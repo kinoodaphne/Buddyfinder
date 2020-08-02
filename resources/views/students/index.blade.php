@@ -81,11 +81,11 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
                 <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
-                <p class="card-text">Intresses:</p>
+                <p class="card-text">{{ $user->buddy }}</p>
                 <p class="card-text">Films</p>
                 <p class="card-text">Racing</p>
-                <p class="card-text">Development</p>
-                <p class="card-text">3 IMD</p>
+                <p class="card-text">{{ $user->study_field }}</p>
+                <p class="card-text">{{ $user->year }}</p>
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">View Profile</button></a>
 

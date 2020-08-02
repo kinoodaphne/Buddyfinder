@@ -23,7 +23,7 @@
         <h3>Personal info</h3>
 
         <form role="form" method="post" action="/users/update/{{$user->id}}" enctype="multipart/form-data">
-          {{method_field('put')}}
+          {{method_field('patch')}}
           {{ csrf_field() }}
 
           <!-- left column -->
@@ -71,7 +71,7 @@
           <div class="form-group">
             <label class="col-lg-7 control-label">Biography:</label>
             <div class="col-lg-10">
-              <textarea class="form-control" rows="8" id="biography" name="biography">{{ $user->bio }}</textarea>
+              <textarea class="form-control" rows="8" id="bio" name="bio">{{ $user->bio }}</textarea>
             </div>
           </div>
           <div class="form-group">

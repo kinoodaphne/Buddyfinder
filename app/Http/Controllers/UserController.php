@@ -57,7 +57,7 @@ class UserController extends Controller
             return redirect('/');
         };
 
-        return redirect()->route('login')->withErrors('Your email or password was incorrect!');
+        return redirect()->route('login')->withErrors('Your email or password was incorrect!');;
     }
 
     public function logout()
@@ -202,7 +202,6 @@ class UserController extends Controller
         $user->travel = $request->input('travel');
         $user->buddy = $request->input('buddy');
         $user->bio = $request->input('bio');
-        $user->password = \Hash::make(request('password'));
         $user->save();
 
         return back()
