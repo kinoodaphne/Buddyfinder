@@ -7,16 +7,7 @@
 @endcomponent
 
 @component('components/search')
-<section class="search-sec container">
-
-    <div class="row">
-        <div class="col-lg-12 has-search">
-            <form action="search" method="post">
-                <span class="fa fa-search form-control-feedback"></span>
-                <input class="form-control " type="search" name="search" placeholder="Search" aria-label="Search">
-            </form>
-        </div>
-    </div>
+<section class="container">
     <form action="" method="post">
         <div class="row">
             <div class="col-lg-12">
