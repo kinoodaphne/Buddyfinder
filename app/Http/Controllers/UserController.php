@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -168,9 +169,6 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
-        // $id = session('uid');
-
         if ($id != session('uid')) {
             return redirect('/');
         } else {
@@ -188,29 +186,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
-        $data['user'] = \App\User::where('id', $id)->first();
-        return view('students/edit', $data);
+        $user = \App\User::find($id);
+        $user->name = $request->get('firstName');
+        $user->name = $request->input('firstName');
+        $user->lastName = $request->input('lastName');
+        $user->email = $request->input('email');
+        $user->year = $request->input('year');
+        $user->location = $request->input('location');
+        $user->study_field = $request->input('study_field');
+        $user->music = $request->input('music');
+        $user->hobbies = $request->input('hobbies');
+        $user->series = $request->input('series');
+        $user->gaming = $request->input('gaming');
+        $user->books = $request->input('books');
+        $user->travel = $request->input('travel');
+        $user->buddy = $request->input('buddy');
+        $user->bio = $request->input('bio');
+        $user->password = \Hash::make(request('password'));
+        $user->save();
 
-        $id = new \App\User();
-        $id->name = $request->input('firstName');
-        $id->lastName = $request->input('lastName');
-        $id->email = $request->input('email');
-        $id->year = $request->input('year');
-        $id->location = $request->input('location');
-        $id->study_field = $request->input('study_field');
-        $id->music = $request->input('music');
-        $id->hobbies = $request->input('hobbies');
-        $id->series = $request->input('series');
-        $id->gaming = $request->input('gaming');
-        $id->books = $request->input('books');
-        $id->travel = $request->input('travel');
-        $id->buddy = $request->input('buddy');
-        $id->bio = $request->input('bio');
-        // $id->password = $request->input('password'); 
-
-        $id->save($request->all());
-        return redirect('/students/{{$id}}');
+        return back()
+            ->with('success', 'Wijzigingen opgeslagen');
     }
 
     /**

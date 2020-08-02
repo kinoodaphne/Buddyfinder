@@ -39,7 +39,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/users/{{ session('uid') }}">View profile</a>
-                    <a class="dropdown-item" href="/users/{{ session('uid') }}/edit">Edit profile</a>
+                    <a class="dropdown-item" href="/users/edit/{{ session('uid') }}">Edit profile</a>
                     <a class="dropdown-item" href="/user/logout">Log out</a>
                 </div>
 

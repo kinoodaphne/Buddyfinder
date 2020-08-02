@@ -22,7 +22,8 @@
       <div class="col-lg-7 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
         <h3>Personal info</h3>
 
-        <form role="form" method="post" action="/users/{user}" enctype="multipart/form-data">
+        <form role="form" method="post" action="/users/update/{{$user->id}}" enctype="multipart/form-data">
+          {{method_field('put')}}
           {{ csrf_field() }}
 
           <!-- left column -->
