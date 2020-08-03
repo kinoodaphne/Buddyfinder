@@ -48,4 +48,9 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/edit/{user}', 'UserController@edit');
 Route::patch('/users/update/{user}', 'UserController@update');
 
+/**
+ * Show the search page with the results
+ */
+Route::get('/user/search', 'UserController@searchView');
+Route::any('/search', 'UserController@search');
 // Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');

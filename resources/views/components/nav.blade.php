@@ -8,7 +8,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <form class="form-inline my-2 my-lg-0 ml-auto has-search">
+        <form action="/search" method="POST" class="form-inline my-2 my-lg-0 ml-auto has-search">
+            {{ csrf_field() }}
             <span class="fa fa-search form-control-feedback"></span>
             <input class="form-control " type="search" name="search" placeholder="Zoek" aria-label="Search">
             <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->

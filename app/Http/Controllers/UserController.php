@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
@@ -76,10 +77,26 @@ class UserController extends Controller
         return redirect('user/login');
     }
 
-    public function search()
+    public function searchView()
     {
-        $data['users'] = \DB::table('users')->get();
-        return view('search', $data);
+        if (session('uid') == true) {
+            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            return view('search');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        // Logic for searching people
+        $q = $request->get('search');
+        $user = \App\User::where('name', 'LIKE', '%' . $q . '%')->orWhere('lastName', 'LIKE', '%' . $q . '%')->get();
+
+        if (count($user) > 0) {
+            return view('search')->withDetails($user)->withQuery($q);
+        } else {
+            $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
+            return view('search');
+        }
     }
 
     /**
@@ -148,9 +165,6 @@ class UserController extends Controller
         $user->password = $request->input('password');
 
         $user->save();
-
-        // Message will be displayed only once
-        $request->session()->flash('message', 'Student saved');
 
         /**
          * Message will be displayed all the time
@@ -223,10 +237,14 @@ class UserController extends Controller
             $user->buddy = "Searcher";
         }
         $user->bio = $request->input('bio');
-        $user->save();
 
-        return back()
-            ->with('success', 'Wijzigingen opgeslagen');
+        if ($user->save()) {
+            $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
+        } else {
+            $request->session()->flash('message-error', 'Oeps, hier ging iets fout!');
+        }
+
+        return back();
     }
 
     /**

@@ -7,55 +7,6 @@
 @endcomponent
 
 @component('components/search')
-<section class="search-sec container">
-
-    <div class="row">
-        <div class="col-lg-12 has-search">
-            <form action="search" method="post">
-                <span class="fa fa-search form-control-feedback"></span>
-                <input class="form-control " type="search" name="search" placeholder="Search" aria-label="Search">
-            </form>
-        </div>
-    </div>
-    <form action="" method="post">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-                        <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select
-                                interests</option>
-                            <option>Gaming</option>
-                            <option>Music</option>
-                            <option>Party</option>
-                            <option>Food</option>
-                            <option>Sports</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-                        <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select specialization</option>
-                            <option>Development</option>
-                            <option>Design</option>
-                            <option>Both</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-                        <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select course year</option>
-                            <option>1 IMD</option>
-                            <option>2 IMD</option>
-                            <option>3 IMD</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-                        <button type="button" class="btn btn-primary wrn-btn">Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</section>
 @endcomponent
 
 @section('content')
@@ -67,19 +18,28 @@
             <br />
         </div>
     </div>
+    @if($flash = session('message'))
+    <div class="alert alert-danger">{{ $flash }}</div>
+    @endif
     <div class="card-deck row row-table">
-        @foreach ($students as $student)
-
-        <div class="col-3">
-            <div class="img-container">
-                <img src="{{ $student->profile_picture }}" class="card-img-top stretchy" alt="...">
+        @if(isset($details))
+        @foreach($details as $user)
+        <div class="col-sm-3">
+            <div class="card-container">
+                <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
+                <!-- <img src="/images/profile.jpeg" class="card-img-top" alt="..."> -->
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ $student->firstName }} {{ $student->lastName }}</h5>
-                <p class="card-text">{{ $student->bio }}</p>
-                <p class="card-text"><small class="text-muted">Location here</small></p>
-                <button class="btn btn-primary"><a href="/students/{{ $student->id }}">View
-                        Profile</a></button>
+                <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
+                <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
+                <p class="card-text">{{ $user->buddy }}</p>
+                <p class="card-text">Films</p>
+                <p class="card-text">Racing</p>
+                <p class="card-text">{{ $user->study_field }}</p>
+                <p class="card-text">{{ $user->year }}</p>
+
+                <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
+
                 {{-- <?php
                         if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
                             echo '';
@@ -90,6 +50,7 @@
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
