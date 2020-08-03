@@ -16,18 +16,16 @@
     </div>
     <!-- edit form column -->
     <div class="col-md-8 personal-info">
-        <h3>Personal info</h3>
-
-
+        <h3>Persoonlijke informatie</h3>
 
         <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
+            <label class="col-lg-3 control-label">Voornaam:</label>
             <div class="col-lg-8">
                 <input class="form-control" type="text" value="{{ $user->name }}" name="name" id="name">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
+            <label class="col-lg-3 control-label">Achternaam:</label>
             <div class="col-lg-8">
                 <input class="form-control" type="text" value="{{ $user->lastName }}" name="lastName" id="lastName">
             </div>
@@ -40,19 +38,19 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Location:</label>
+            <label class="col-lg-3 control-label">Woonplaats:</label>
             <div class="col-lg-8">
                 <input class="form-control" type="text" value="{{ $user->location }}" name="location" id="location">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Study field:</label>
+            <label class="col-lg-3 control-label">Keuzerichting:</label>
             <div class="col-lg-8">
                 <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field" id="study_field">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Biography:</label>
+            <label class="col-lg-3 control-label">Korte omschrijving:</label>
             <div class="col-lg-8">
                 <textarea class="form-control" rows="8" id="biography" name="biography">{{ $user->bio }}</textarea>
             </div>

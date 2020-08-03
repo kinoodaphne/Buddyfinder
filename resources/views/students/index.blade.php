@@ -14,33 +14,33 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 p-2">
                         <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select
-                                interests</option>
+                            <option>Selecteer een kenmerk</option>
                             <option>Gaming</option>
-                            <option>Music</option>
-                            <option>Party</option>
-                            <option>Food</option>
-                            <option>Sports</option>
+                            <option>Muziek</option>
+                            <option>Hobbies</option>
+                            <option>Series</option>
+                            <option>Boeken</option>
+                            <option>Reizen</option>
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-2">
                         <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select specialization</option>
+                            <option>Selecteer je keuzerichting</option>
                             <option>Development</option>
                             <option>Design</option>
-                            <option>Both</option>
+                            <option>Beide</option>
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-2">
                         <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>Select course year</option>
+                            <option>Selecteer een jaar</option>
                             <option>1 IMD</option>
                             <option>2 IMD</option>
                             <option>3 IMD</option>
                         </select>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-                        <button type="button" class="btn btn-primary wrn-btn">Search</button>
+                        <button type="button" class="btn btn-primary wrn-btn">Zoek</button>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-md-12">
             <br />
-            <h3 align="center">All Students</h3>
+            <h3 align="center">Alle Studenten</h3>
             <br />
         </div>
     </div>
@@ -78,7 +78,7 @@
                 <p class="card-text">{{ $user->study_field }}</p>
                 <p class="card-text">{{ $user->year }}</p>
 
-                <a href="/users/{{ $user->id }}"><button class="btn btn-primary">View Profile</button></a>
+                <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
 
                 {{-- <?php
                         if ($friend->checkIfFriends($user->getId(), $profile['id'])) {

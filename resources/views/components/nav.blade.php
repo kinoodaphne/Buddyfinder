@@ -10,7 +10,7 @@
 
         <form class="form-inline my-2 my-lg-0 ml-auto has-search">
             <span class="fa fa-search form-control-feedback"></span>
-            <input class="form-control " type="search" name="search" placeholder="Search" aria-label="Search">
+            <input class="form-control " type="search" name="search" placeholder="Zoek" aria-label="Search">
             <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
         </form>
         <div class="mr-auto"></div>
@@ -22,7 +22,7 @@
                 <a class="nav-link" href="buddies">Buddies</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="notifications">Requests
+                <a class="nav-link" href="notifications">Verzoeken
                     {{-- <span class="<?php if ($getRequestNumber > 0) {
                                             echo 'redBadge';
                                         } else {
@@ -40,9 +40,9 @@
                     @endauth
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/{{ session('uid') }}">View profile</a>
-                    <a class="dropdown-item" href="/users/edit/{{ session('uid') }}">Edit profile</a>
-                    <a class="dropdown-item" href="/user/logout">Log out</a>
+                    <a class="dropdown-item" href="/users/{{ session('uid') }}">Bekijk profiel</a>
+                    <a class="dropdown-item" href="/users/edit/{{ session('uid') }}">Bewerk profiel</a>
+                    <a class="dropdown-item" href="/user/logout">Log uit</a>
                 </div>
 
             </li>
