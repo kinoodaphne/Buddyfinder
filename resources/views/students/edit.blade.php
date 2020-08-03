@@ -65,8 +65,22 @@
           <div class="form-group">
             <label class="col-lg-7 control-label">Study field:</label>
             <div class="col-lg-10">
-              <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field" id="study_field">
+              <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field" id="study_field" placeholder="Design, Development, Both">
             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-7 control-label">Study year:</label>
+            <div class="col-lg-10">
+              <input class="form-control" type="text" value="{{ $user->year }}" name="year" id="year" placeholder="1IMD, 2IMD, 3IMD">
+            </div>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="buddy">
+            <label class="form-check-label" for="inlineRadio1">Be a buddy</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="searcher">
+            <label class="form-check-label" for="inlineRadio2">Find a buddy</label>
           </div>
           <div class="form-group">
             <label class="col-lg-7 control-label">Biography:</label>

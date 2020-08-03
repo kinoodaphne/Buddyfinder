@@ -34,9 +34,16 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email"
-                        name="email">
+                    <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email" name="email">
                     <div id="uname_response"></div>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="buddy">
+                    <label class="form-check-label" for="inlineRadio1">Be a buddy</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="searcher">
+                    <label class="form-check-label" for="inlineRadio2">Find a buddy</label>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
@@ -44,8 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label>Password Confirmation</label>
-                    <input type="password" class="form-control" placeholder="Password" id="passwordConfirmation"
-                        name="passwordConfirmation">
+                    <input type="password" class="form-control" placeholder="Password" id="passwordConfirmation" name="passwordConfirmation">
                 </div>
                 <input type="submit" class="btn btn-black" value="Register" />
                 <div class="form-group">
