@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('gaming')->nullable();
             $table->string('books')->nullable();
             $table->string('travel')->nullable();
-            $table->string('buddy')->nullable()->default('buddy');
+            $table->string('buddy')->nullable();
             $table->text('bio')->nullable();
             $table->string('profile_picture')->nullable()->default('');
             $table->timestamp('email_verified_at')->nullable();

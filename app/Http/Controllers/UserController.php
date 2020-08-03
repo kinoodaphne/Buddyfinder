@@ -18,6 +18,14 @@ class UserController extends Controller
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
         $user->email = $request->input('email');
+        $fields = $request->input('inlineRadioOptions');
+        if ($fields == 'buddy') {
+            $user->buddy = "buddy";
+        } else {
+            $user->buddy = "searcher";
+        }
+        $user->bio = $request->input('bio');
+        $user->profile_picture = "http://lorempixel.com/640/480/people";
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
@@ -122,14 +130,21 @@ class UserController extends Controller
         $user->year = $request->input('year');
         $user->location = $request->input('location');
         $user->study_field = $request->input('study_field');
+        $user->year = $request->input('year');
         $user->music = $request->input('music');
         $user->hobbies = $request->input('hobbies');
         $user->series = $request->input('series');
         $user->gaming = $request->input('gaming');
         $user->books = $request->input('books');
         $user->travel = $request->input('travel');
-        $user->buddy = $request->input('buddy');
+        $fields = $request->input('inlineRadioOptions');
+        if ($fields == 'buddy') {
+            $user->buddy = "buddy";
+        } else {
+            $user->buddy = "searcher";
+        }
         $user->bio = $request->input('bio');
+        $user->profile_picture = "http://lorempixel.com/640/480/people";
         $user->password = $request->input('password');
 
         $user->save();
@@ -194,13 +209,19 @@ class UserController extends Controller
         $user->year = $request->input('year');
         $user->location = $request->input('location');
         $user->study_field = $request->input('study_field');
+        $user->year = $request->input('year');
         $user->music = $request->input('music');
         $user->hobbies = $request->input('hobbies');
         $user->series = $request->input('series');
         $user->gaming = $request->input('gaming');
         $user->books = $request->input('books');
         $user->travel = $request->input('travel');
-        $user->buddy = $request->input('buddy');
+        $fields = $request->input('inlineRadioOptions');
+        if ($fields == 'buddy') {
+            $user->buddy = "buddy";
+        } else {
+            $user->buddy = "searcher";
+        }
         $user->bio = $request->input('bio');
         $user->save();
 
@@ -221,6 +242,6 @@ class UserController extends Controller
 
         $user->delete();
         $request->session()->flash('message', 'Student has been deleted');
-        return redirect('/students');
+        return redirect('/');
     }
 }
