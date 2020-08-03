@@ -32,8 +32,8 @@ $factory->define(User::class, function (Faker $faker) {
         'books' =>$faker->text,
         'travel' => $faker->text,
         'buddy' => $faker->randomElement(['buddy', 'searcher']),
-        'bio' => $faker->realText(200),
-        'profile_picture' => $faker->imageUrl($width = 640, $height = 480),
+        'bio' => $faker->realText(180),
+        'profile_picture' => $faker->randomElement(['https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1427&q=80', 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80', 'https://images.unsplash.com/photo-1527001192729-dd68b36cd890?ixlib=rb-1.2.1&auto=format&fit=crop&w=762&q=80',]),
         // 'http://lorempixel.com/640/480/'
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

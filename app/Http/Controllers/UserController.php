@@ -20,12 +20,12 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "buddy";
+            $user->buddy = "Buddy";
         } else {
-            $user->buddy = "searcher";
+            $user->buddy = "Searcher";
         }
         $user->bio = $request->input('bio');
-        $user->profile_picture = "http://lorempixel.com/640/480/people";
+        $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
@@ -139,12 +139,12 @@ class UserController extends Controller
         $user->travel = $request->input('travel');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "buddy";
+            $user->buddy = "Buddy";
         } else {
-            $user->buddy = "searcher";
+            $user->buddy = "Searcher";
         }
         $user->bio = $request->input('bio');
-        $user->profile_picture = "http://lorempixel.com/640/480/people";
+        $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
         $user->password = $request->input('password');
 
         $user->save();
@@ -218,9 +218,9 @@ class UserController extends Controller
         $user->travel = $request->input('travel');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "buddy";
+            $user->buddy = "Buddy";
         } else {
-            $user->buddy = "searcher";
+            $user->buddy = "Searcher";
         }
         $user->bio = $request->input('bio');
         $user->save();
