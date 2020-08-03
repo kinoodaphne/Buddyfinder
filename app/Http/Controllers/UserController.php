@@ -77,14 +77,6 @@ class UserController extends Controller
         return redirect('user/login');
     }
 
-    public function searchView()
-    {
-        if (session('uid') == true) {
-            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
-            return view('search');
-        }
-    }
-
     public function search(Request $request)
     {
         // Logic for searching people
@@ -261,5 +253,21 @@ class UserController extends Controller
         $user->delete();
         $request->session()->flash('message', 'Student has been deleted');
         return redirect('/');
+    }
+
+    public function request()
+    {
+        if (session('uid') == true) {
+            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            return view('requests');
+        }
+    }
+
+    public function buddies()
+    {
+        if (session('uid') == true) {
+            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            return view('buddies');
+        }
     }
 }

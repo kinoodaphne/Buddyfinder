@@ -20,10 +20,10 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="buddies">Buddies</a>
+                <a class="nav-link" href="/buddies">Buddies</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="notifications">Verzoeken
+                <a class="nav-link" href="/requests">Verzoeken
                     {{-- <span class="<?php if ($getRequestNumber > 0) {
                                             echo 'redBadge';
                                         } else {
