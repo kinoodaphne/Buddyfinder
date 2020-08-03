@@ -5,10 +5,14 @@
 
 @section('content')
 <div class="container-fluid">
+  @if($flash = session('message-success'))
+  <div class="alert alert-success">{{ $flash }}</div>
+  @elseif ($flash = session('message-error'))
+  <div class="alert alert-danger">{{ $flash }}</div>
+  @endif
   <h1>{{ $user->name }} {{ $user->lastName }}</h1>
   <hr>
   <div class="row">
-
     <div class="edit-side col-lg-2">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="tabs nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Account informatie</a>
