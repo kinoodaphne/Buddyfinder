@@ -40,6 +40,8 @@ Route::get('/', 'UserController@index');
  * Show a specific user page
  */
 Route::get('/users/{user}', 'UserController@show');
+Route::get('/profile/{user}', 'UserController@profile');
+
 
 
 /**
