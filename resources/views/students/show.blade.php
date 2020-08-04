@@ -21,38 +21,38 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">Voornaam:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->name }}" name="name" id="name">
+                <input readonly class="form-control-plaintext" type="text" value="{{ $user->name }}" name="name" id="name">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Achternaam:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->lastName }}" name="lastName" id="lastName">
+                <input readonly class="form-control-plaintext" type="text" value="{{ $user->lastName }}" name="lastName" id="lastName">
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->email }}" name="email" id="email">
+                <input readonly class="form-control-plaintext" type="text" value="{{ $user->email }}" name="email" id="email">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Woonplaats:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->location }}" name="location" id="location">
+                <input readonly class="form-control-plaintext" type="text" value="{{ $user->location }}" name="location" id="location">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Keuzerichting:</label>
             <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field" id="study_field">
+                <input readonly class="form-control-plaintext" type="text" value="{{ $user->study_field }}" name="study_field" id="study_field">
             </div>
         </div>
         <div class="form-group">
             <label class="col-lg-3 control-label">Korte omschrijving:</label>
             <div class="col-lg-8">
-                <textarea class="form-control" rows="8" id="biography" name="biography">{{ $user->bio }}</textarea>
+                <textarea readonly class="form-control-plaintext" rows="8" id="biography" name="biography">{{ $user->bio }}</textarea>
             </div>
         </div>
     </div>
