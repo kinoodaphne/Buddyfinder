@@ -63,9 +63,11 @@
         </div>
     </div>
     <div class="col-md-2">
+        @if (!empty($friendRequest))
         <a href="/add-friend/{{ $user->id }}">
-            <button class="btn btn-primary">Voeg toe</button>
+            <button class="btn btn-primary">{{ $friendRequest }}</button>
         </a>
+        @endif
     </div>
     {{-- <div class="col-lg-2">
         <h3>Friends</h3>

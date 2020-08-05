@@ -178,9 +178,34 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = \App\User::where('id', $id)->with('friends')->first();
-        // $data['user'] = \App\User::where('id', $id)->first();
-        return view('students/show', $data);
+        if ( \Auth::check()){
+            // Check if the user is friend or not
+            $user_id = \Auth::user()->id;
+            $friend_id = \App\User::getUserid($id);
+            $friendCount = \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->count();
+
+            if ($friendCount > 0) {
+                $friendDetails = \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->first();
+                // echo $friendDetails->accepted;
+                // die;
+                if ( $friendDetails->accepted == 1) {
+                    echo "Friends";
+                    $friendRequest = "Verwijder";
+                } else {
+                    echo "Request send";
+                    $friendRequest = "Verzoek verzonden";
+                }
+            } else {
+                echo "Send request";
+                $friendRequest = 'Voeg toe';
+            }
+        } else {
+            $friendRequest = "";
+        }
+
+        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        $data['user'] = \App\User::where('id', $id)->first();
+        return view('students/show', $data)->with(compact('friendRequest'));
     }
 
     /**

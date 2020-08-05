@@ -39,8 +39,6 @@
                 <p class="card-text">{{ $user->year }}</p>
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
-
-                <a href="/add-friend/{{ $user->id }}"><button class="btn btn-primary">Voeg toe</button></a>
             </div>
         </div>
         @endforeach
