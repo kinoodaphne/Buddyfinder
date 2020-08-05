@@ -53,10 +53,6 @@ Route::patch('/users/update/{user}', 'UserController@update');
 /**
  * Show the search page with the results
  */
-// Route::get('/users/search', 'UserController@searchView');
 Route::any('/search', 'UserController@search');
 
-Route::get('/requests', 'UserController@request');
-Route::get('/buddies', 'UserController@buddies');
-
-// Route::delete('/student/delete/{id}', 'Studentcontroller@destroy');
+Route::match(['get', 'post'], '/add-friend/{userid}', 'UserController@addFriend');
