@@ -40,13 +40,7 @@
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
 
-                {{-- <?php
-                        if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
-                            echo '';
-                        } else {
-                            echo '<button class="btn btn-primary"><a href="functions.php?action=send_req&id=' . $profile['id'] . '">Send Request</a></button>';
-                        }
-                        ?> --}}
+                <a href="/add-friend/{{ $user->id }}"><button class="btn btn-primary">Voeg toe</button></a>
             </div>
         </div>
         @endforeach

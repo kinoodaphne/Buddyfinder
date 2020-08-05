@@ -63,21 +63,23 @@
         </div>
     </div>
     <div class="col-md-2">
-        {{-- <?php
-                if ($alreadyFriends) {
-                    echo '<button class="btn btn-primary"><a href="functions.php?action=unfriend_req&id=' . $userProfile->getId() . '">Unfriend</a></button>';
-                } elseif ($checkRequestSender) {
-                    echo '<button class="btn btn-primary"><a href="functions.php?action=cancel_req&id=' . $userProfile->getId() . '">Cancel request</a></button>';
-                } elseif ($checkRequestReceiver) {
-                    echo '<div>
-                <h5> Incoming request</h5>
-                <button class="btn btn-secondary"><a href="functions.php?action=ignore_req&id=' . $userProfile->getId() . '">Ignore</a></button>&nbsp;
-                <button class="btn btn-primary"><a href="functions.php?action=accept_req&id=' . $userProfile->getId() . '">Accept</a></button>
-            </div>';
-                } else {
-                    echo '<button class="btn btn-primary"><a href="functions.php?action=send_req&id=' . $userProfile->getId() . '">Send Request</a></button>';
-                } ?> --}}
+        <a href="/add-friend/{{ $user->id }}">
+            <button class="btn btn-primary">Voeg toe</button>
+        </a>
     </div>
+    {{-- <div class="col-lg-2">
+        <h3>Friends</h3>
+
+        <div>
+            <h5>You have {{ count($user->friends) }} friends </h5>
+    <ul>
+        @foreach($user->friends as $friend)
+        <li>{{ $friend->user1_id }} <-> {{ $friend->user2_id }}</li>
+        @endforeach
+    </ul>
+    <p>View them <a class="buddies" href="buddies">here</a></p>
+</div>
+</div> --}}
 </div>
 <hr>
 @endsection

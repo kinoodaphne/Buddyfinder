@@ -22,6 +22,15 @@
     <div class="alert alert-danger">{{ $flash }}</div>
     @endif
     <div class="card-deck row row-table">
+        @foreach($user->friends as $friend)
+        <div class="col-sm-3">
+            <div class="card-body">
+                <h5>{{ $friend->user1_id }} <-> {{ $friend->user2_id }}</h5>
+                {{dd($user->friends)}}
+            </div>
+        </div>
+        @endforeach
+
         @if(isset($details))
         @foreach($details as $user)
         <div class="col-sm-3">
