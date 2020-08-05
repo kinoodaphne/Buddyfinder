@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Friend;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 
@@ -177,8 +178,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
-        $data['user'] = \App\User::where('id', $id)->first();
+        $data['user'] = \App\User::where('id', $id)->with('friends')->first();
+        // $data['user'] = \App\User::where('id', $id)->first();
         return view('students/show', $data);
     }
 
@@ -255,19 +256,21 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function request()
-    {
-        if (session('uid') == true) {
-            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
-            return view('requests');
-        }
-    }
+    public function addfriend($userid) {
+        $userCount = \App\User::where('id', $userid)->count();
 
-    public function buddies()
-    {
-        if (session('uid') == true) {
-            // $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
-            return view('buddies');
+        if ( $userCount > 0 ) {
+            $user_id = \Auth::user()->id;
+            $friend_id = \App\User::getUserid($userid);
+
+            $friend = new \App\Friend;
+            $friend->user_id = $user_id;
+            $friend->friend_id = $friend_id;
+            $friend->save();
+            echo "Friend request sent to ". $friend_id;
+            die;
+        } else {
+            abort(404);
         }
     }
 }
