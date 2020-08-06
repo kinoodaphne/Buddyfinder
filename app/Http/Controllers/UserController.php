@@ -335,7 +335,14 @@ class UserController extends Controller
 
     public function showBuddies() {
         $user_id = \Auth::user()->id;
-        $friends = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->get();
+        $friendsCount = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->count();
+
+        if ($friendsCount > 0) {
+            $friends = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->get();
+        } else {
+            $friends = \App\Friend::where(['user_id' => $user_id, 'accepted' => 1])->get();
+        }
+        
 
         return view('buddies')->with(compact('friends'));
     }
