@@ -314,7 +314,7 @@ class UserController extends Controller
 
     public function friendsRequests() {
         $user_id = \Auth::user()->id;
-        $friendsRequests = \App\Friend::where('friend_id', $user_id)->where('accepted', '==', 0)->get();
+        $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
 
         return view('requests')->with(compact('friendsRequests'));
     }
