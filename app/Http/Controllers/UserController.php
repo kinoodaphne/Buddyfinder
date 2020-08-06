@@ -190,7 +190,7 @@ class UserController extends Controller
                 // die;
                 if ( $friendDetails->accepted == 1) {
                     echo "Friends";
-                    $friendRequest = "Verwijder";
+                    $friendRequest = "Vrienden (Verwijder)";
                 } else {
                     echo "Request send";
                     $friendRequest = "Verzoek verzonden";
@@ -292,8 +292,7 @@ class UserController extends Controller
             $friend->user_id = $user_id;
             $friend->friend_id = $friend_id;
             $friend->save();
-            echo "Friend request sent to ". $friend_id;
-            die;
+            return redirect()->back();
         } else {
             abort(404);
         }
