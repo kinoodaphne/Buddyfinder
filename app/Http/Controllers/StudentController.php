@@ -100,7 +100,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        return view('students/edit');
+        $data['student'] = \App\Student::where('id', $id)->with('friends')->first();
+        return view('students/edit', $data);
     }
 
     /**
@@ -112,6 +113,9 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data['student'] = \App\Student::where('id', $id)->with('friends')->first();
+        return view('students/edit', $data);
+
         $id = new \App\Student();
         $id->firstName = $request->input('firstName');
         $id->lastName = $request->input('lastName');
@@ -138,8 +142,13 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = \Auth::user();
+        $student = \App\Student::find( $request->user_id );
+
+        $student->delete();
+        $request->session()->flash('message', 'Student has been deleted');
+        return redirect('/students');
     }
 }

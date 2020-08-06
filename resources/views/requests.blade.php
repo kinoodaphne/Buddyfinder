@@ -14,16 +14,16 @@
     <div class="row">
         <div class="col-md-12">
             <br />
-            <h3 align="center">Alle Studenten</h3>
+            <h3 align="center">Vriendschapsverzoeken</h3>
             <br />
         </div>
     </div>
     @if($flash = session('message'))
-    <div class="alert alert-success">{{ $flash }}</div>
+    <div class="alert alert-danger">{{ $flash }}</div>
     @endif
     <div class="card-deck row row-table">
-        @foreach ($users as $user)
-
+        @if(isset($details))
+        @foreach($details as $user)
         <div class="col-sm-3">
             <div class="card-container">
                 <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
@@ -39,9 +39,18 @@
                 <p class="card-text">{{ $user->year }}</p>
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
+
+                {{-- <?php
+                        if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
+                            echo '';
+                        } else {
+                            echo '<button class="btn btn-primary"><a href="functions.php?action=send_req&id=' . $profile['id'] . '">Send Request</a></button>';
+                        }
+                        ?> --}}
             </div>
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
