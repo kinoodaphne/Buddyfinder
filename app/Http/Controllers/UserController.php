@@ -190,7 +190,7 @@ class UserController extends Controller
                 // die;
                 if ( $friendDetails->accepted == 1) {
                     echo "Friends";
-                    $friendRequest = "Vrienden (Verwijder)";
+                    $friendRequest = "Verwijder";
                 } else {
                     echo "Request send";
                     $friendRequest = "Verzoek verzonden";
