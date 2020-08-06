@@ -332,4 +332,11 @@ class UserController extends Controller
         \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->delete();
         return redirect()->back()->with('message-error', 'Verzoek geweigerd!');
     }
+
+    public function showBuddies() {
+        $user_id = \Auth::user()->id;
+        $friends = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->get();
+
+        return view('buddies')->with(compact('friends'));
+    }
 }

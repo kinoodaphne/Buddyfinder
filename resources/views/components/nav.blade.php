@@ -22,7 +22,7 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/buddies/{{ session('uid') }}">Buddies</a>
+                <a class="nav-link" href="/buddies">Buddies</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/requests">Verzoeken
