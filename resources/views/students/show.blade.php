@@ -65,7 +65,7 @@
     <div class="col-md-2">
         @if (!empty($friendRequest))
         @if ( $friendRequest == "Verwijder" )
-        <a href="/add-friend/{{ $user->id }}">
+        <a href="/remove-friend/{{ $user->id }}">
             <button class="btn btn-outline-secondary">{{ $friendRequest }}</button>
         </a>
         @else

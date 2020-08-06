@@ -56,3 +56,4 @@ Route::patch('/users/update/{user}', 'UserController@update');
 Route::any('/search', 'UserController@search');
 
 Route::match(['get', 'post'], '/add-friend/{userid}', 'UserController@addFriend');
+Route::match(['get', 'post'], '/remove-friend/{userid}', 'UserController@removeFriend');

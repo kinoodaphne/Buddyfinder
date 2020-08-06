@@ -281,7 +281,7 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function addfriend($userid) {
+    public function addFriend($userid) {
         $userCount = \App\User::where('id', $userid)->count();
 
         if ( $userCount > 0 ) {
@@ -292,6 +292,20 @@ class UserController extends Controller
             $friend->user_id = $user_id;
             $friend->friend_id = $friend_id;
             $friend->save();
+            return redirect()->back();
+        } else {
+            abort(404);
+        }
+    }
+
+    public function removeFriend($userid) {
+        $userCount = \App\User::where('id', $userid)->count();
+
+        if ( $userCount > 0 ) {
+            $user_id = \Auth::user()->id;
+            $friend_id = \App\User::getUserid($userid);
+
+            \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->delete();
             return redirect()->back();
         } else {
             abort(404);
