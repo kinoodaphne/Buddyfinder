@@ -311,4 +311,18 @@ class UserController extends Controller
             abort(404);
         }
     }
+
+    public function friendsRequests() {
+        $user_id = \Auth::user()->id;
+        $friendsRequests = \App\Friend::where('friend_id', $user_id)->where('accepted', '==', 0)->get();
+
+        return view('requests')->with(compact('friendsRequests'));
+    }
+
+    public function acceptRequest($sender_id) {
+        $receiver_id = \Auth::user()->id;
+
+        \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->update(['accepted' => 1]);
+        return redirect()->back()->with('message-success', 'Verzoek geaccepteerd!');
+    }
 }
