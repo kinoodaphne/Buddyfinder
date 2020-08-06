@@ -325,4 +325,11 @@ class UserController extends Controller
         \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->update(['accepted' => 1]);
         return redirect()->back()->with('message-success', 'Verzoek geaccepteerd!');
     }
+
+    public function cancelRequest($sender_id) {
+        $receiver_id = \Auth::user()->id;
+
+        \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->delete();
+        return redirect()->back()->with('message-error', 'Verzoek geweigerd!');
+    }
 }

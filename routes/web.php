@@ -60,3 +60,4 @@ Route::match(['get', 'post'], '/remove-friend/{userid}', 'UserController@removeF
 
 Route::get('/requests', 'UserController@friendsRequests');
 Route::get('/accept-request/{userid}', 'UserController@acceptRequest');
+Route::get('/cancel-request/{userid}', 'UserController@cancelRequest');
