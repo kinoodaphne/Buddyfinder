@@ -63,6 +63,12 @@
         </div>
     </div>
     <div class="col-md-2">
+        @if (\Auth::check())
+        @if (\Auth::user()->id == $user->id)
+        <a href="/users/edit/{{ $user->id }}">
+            <button class="btn btn-primary">Bewerk profiel</button>
+        </a>
+        @else
         @if (!empty($friendRequest))
         @if ( $friendRequest == "Verwijder" )
         <a href="/remove-friend/{{ $user->id }}">
@@ -72,6 +78,8 @@
         <a href="/add-friend/{{ $user->id }}">
             <button class="btn btn-primary">{{ $friendRequest }}</button>
         </a>
+        @endif
+        @endif
         @endif
         @endif
     </div>
