@@ -26,9 +26,11 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/requests">Verzoeken
+                    @if (\App\Friend::newFriendCount() > 0)
                     <span class="redBadge">
-                        {{-- {{ Response::newResponsesCount() }} --}}
+                        {{ \App\Friend::newFriendCount() }}
                     </span>
+                    @endif
                 </a>
             </li>
             <li class="nav-item active">

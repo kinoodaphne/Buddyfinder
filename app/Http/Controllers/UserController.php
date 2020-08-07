@@ -6,6 +6,10 @@ use App\User;
 use App\Friend;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -342,8 +346,8 @@ class UserController extends Controller
         } else {
             $friends = \App\Friend::where(['user_id' => $user_id, 'accepted' => 1])->get();
         }
-        
 
         return view('buddies')->with(compact('friends'));
     }
+
 }
