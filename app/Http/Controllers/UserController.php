@@ -347,7 +347,7 @@ class UserController extends Controller
             $friends = \App\Friend::where(['user_id' => $user_id, 'accepted' => 1])->get();
         }
 
-        return view('buddies')->with(compact('friends'));
+        return view('buddies')->with(compact('friends', 'friendsCount'));
     }
 
 }

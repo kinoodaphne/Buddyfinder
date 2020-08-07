@@ -26,6 +26,7 @@
     <div class="card-deck row row-table">
         @foreach($friends as $request)
         <?php
+        if ($friendsCount > 0) {
             $sender_id = \App\User::getUserId($request->user_id);
             $sender_name = \App\User::getUserName($request->user_id);
             $sender_lastName = \App\User::getUserLastName($request->user_id);
@@ -34,7 +35,17 @@
             $sender_year = \App\User::getUserYear($request->user_id);
             $sender_study_field = \App\User::getUserStudyField($request->user_id);
             $sender_profilePicture = \App\User::getUserProfilePicture($request->user_id);
-
+        } else {
+            $sender_id = \App\User::getUserId($request->friend_id);
+            $sender_name = \App\User::getUserName($request->friend_id);
+            $sender_lastName = \App\User::getUserLastName($request->friend_id);
+            $sender_location = \App\User::getUserLocation($request->friend_id);
+            $sender_buddy = \App\User::getUserBuddy($request->friend_id);
+            $sender_year = \App\User::getUserYear($request->friend_id);
+            $sender_study_field = \App\User::getUserStudyField($request->friend_id);
+            $sender_profilePicture = \App\User::getUserProfilePicture($request->friend_id);
+        }
+            
         ?>
         <div class="col-sm-3">
             <div class="card-container">
