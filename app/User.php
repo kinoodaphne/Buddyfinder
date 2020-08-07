@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function friends() {
+        return $this->hasMany(\App\Friend::class);
+    }
+
     public static function getUserName($user_id) {
         $getUserId = \App\User::select('name')->where('id', $user_id)->first();
         return $getUserId->name;
