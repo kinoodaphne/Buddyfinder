@@ -43,7 +43,7 @@
             </div>
             <div class="card-body">
                 <a target="blank" href="/users/{{ $sender_id }}">
-                    <h5 class="card-title">{{ $sender_name }} {{ $sender_lastName }}</h5>
+                    <h5 class="card-title text-black">{{ $sender_name }} {{ $sender_lastName }}</h5>
                 </a>
                 <p class="card-text"><small class="text-muted">{{ $sender_location }}</small></p>
                 <p class="card-text">{{ $sender_buddy }}</p>
