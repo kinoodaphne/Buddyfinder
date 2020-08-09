@@ -10,7 +10,13 @@
 </div>
 <div class="main">
     <div class="col-md-6 col-sm-12">
+        <div class="login-main-text-mobile">
+            <img src="/images/rocket.png" alt="logo" width="150px" heigh="150px">
+            <h2>IMDBUDDY<br> Meld aan</h2>
+            <p>Login or register from here to access.</p>
+        </div>
         <div class="login-form">
+            <h2 class="pb-2 text-center">Registreer</h2>
             <form method="post" action="">
 
                 {{ csrf_field() }}
@@ -34,18 +40,29 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email" name="email">
-                    <div id="uname_response"></div>
+                    <input type="email" class="form-control" placeholder="r-number@student.thomasmore.be" id="email"
+                        name="email">
                 </div>
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="buddy">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="buddy">
                         <label class="form-check-label" for="inlineRadio1">Help een buddy</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="searcher">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="searcher">
                         <label class="form-check-label" for="inlineRadio2">Zoek een buddy</label>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label>Keuzerichting:</label>
+                    <input class="form-control" type="text" name="study_field" id="study_field"
+                        placeholder="Design, Development, Both">
+                </div>
+                <div class="form-group">
+                    <label>Studie jaar:</label>
+                    <input class="form-control" type="text" name="year" id="year" placeholder="1IMD, 2IMD, 3IMD">
                 </div>
                 <div class="form-group">
                     <label>Wachtwoord</label>
@@ -53,13 +70,14 @@
                 </div>
                 <div class="form-group">
                     <label>Wachtwoord confirmatie</label>
-                    <input type="password" class="form-control" placeholder="Confirmatie" id="passwordConfirmation" name="passwordConfirmation">
+                    <input type="password" class="form-control" placeholder="Confirmatie" id="passwordConfirmation"
+                        name="passwordConfirmation">
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-black" value="Registeer" />
+                    <input type="submit" class="btn btn-color" value="Registeer" />
                 </div>
                 <div class="form-group">
-                    <p>Reeds een account? <a href="login" class="link">Meld je aan</a></p>
+                    <p>Reeds een account? <a href="login" class="link-reg">Meld je aan</a></p>
                 </div>
             </form>
         </div>
