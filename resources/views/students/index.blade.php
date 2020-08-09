@@ -19,7 +19,11 @@
         </div>
     </div>
     @if($flash = session('message'))
-    <div class="alert alert-success">{{ $flash }}</div>
+    @component('components/alert')
+    @slot('type', 'success')
+    {{ $flash }}
+    @endslot
+    @endcomponent
     @endif
     <div class="card-deck row row-table">
         @foreach ($users as $user)
@@ -44,4 +48,5 @@
         @endforeach
     </div>
 </div>
+<hr>
 @endsection

@@ -5,7 +5,7 @@
 
 .sidenav {
     height: 100%;
-    background-color: #000;
+    background-color: #204051;
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -62,7 +62,26 @@
     }
 }
 
-.btn-black {
-    background-color: #000;
+.btn-color {
+    background-color: #204051;
     color: #fff;
+}
+
+.link-reg {
+    color: #3b6978;
+    text-decoration: underline;
+}
+
+.login-main-text-mobile {
+    display: none;
+}
+
+@media (max-width: 375px) {
+    .sidenav {
+        display: none;
+    }
+
+    .login-main-text-mobile img {
+        width: 15%;
+    }
 }

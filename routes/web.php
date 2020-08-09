@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
+ * CRUD
+ * 
+ * Create
+ * Read
+ * Update
+ * Delete
+ */
+
+/**
  * Registering a user to the platform
  */
 Route::get('/user/register', 'UserController@register');

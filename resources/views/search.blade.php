@@ -53,4 +53,5 @@
         @endif
     </div>
 </div>
+<hr>
 @endsection

@@ -30,6 +30,8 @@ class UserController extends Controller
         } else {
             $user->buddy = "Searcher";
         }
+        $user->year = $request->input('year');
+        $user->study_field = $request->input('study_field');
         $user->bio = $request->input('bio');
         $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
         $user->password = \Hash::make($request->input('password'));
@@ -69,9 +71,11 @@ class UserController extends Controller
              *  */
 
             return redirect('/');
-        };
+        }
+        else {
 
-        return redirect()->route('login')->withErrors('Your email or password was incorrect!');;
+            return back()->withErrors('Oei, je email of wachtwoord lijkt fout te zijn. Probeer opnieuw!');
+        }
     }
 
     public function logout()

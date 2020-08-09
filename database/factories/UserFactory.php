@@ -33,8 +33,8 @@ $factory->define(User::class, function (Faker $faker) {
         'travel' => $faker->text,
         'buddy' => $faker->randomElement(['Buddy', 'Searcher']),
         'bio' => $faker->realText(180),
-        'profile_picture' => $faker->randomElement(['https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1427&q=80', 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80', 'https://images.unsplash.com/photo-1527001192729-dd68b36cd890?ixlib=rb-1.2.1&auto=format&fit=crop&w=762&q=80',]),
-        // 'http://lorempixel.com/640/480/'
+        // 'profile_picture' => $faker->randomElement(['https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1427&q=80', 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80', 'https://images.unsplash.com/photo-1527001192729-dd68b36cd890?ixlib=rb-1.2.1&auto=format&fit=crop&w=762&q=80',]),
+        'profile_picture' => $faker->randomElement(['/images/profiles/BG_1.jpg', '/images/profiles/BG_2.jpg', '/images/profiles/BG_3.jpg', '/images/profiles/BG_4.jpg', '/images/profiles/BG_5.jpg', '/images/profiles/BG_6.jpg', '/images/profiles/BG_7.jpg', '/images/profiles/BG_8.jpg']),
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
