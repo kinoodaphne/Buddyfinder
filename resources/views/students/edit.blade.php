@@ -32,12 +32,11 @@
 
     <div class="tab-content col-lg-10" id="v-pills-tabContent">
       <!-- edit form column -->
-
-      <form role="form" method="post" action="/users/update/{{$user->id}}" enctype="multipart/form-data">
-        {{method_field('patch')}}
-        {{ csrf_field() }}
-        <div class="col-lg-7 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel"
-          aria-labelledby="v-pills-home-tab">
+      <div class="col-lg-7 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel"
+        aria-labelledby="v-pills-home-tab">
+        <form role="form" method="post" action="/users/update/{{$user->id}}" enctype="multipart/form-data">
+          {{method_field('patch')}}
+          {{ csrf_field() }}
           <h3>Persoonlijke informatie</h3>
 
           <!-- left column -->
@@ -116,7 +115,7 @@
               <input type="submit" class="btn btn-default" value="Cancel">
             </div>
           </div>
-        </div>
+      </div>
       </form>
 
       <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-profile" role="tabpanel"
