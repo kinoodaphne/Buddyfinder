@@ -34,24 +34,24 @@
       <!-- edit form column -->
       <div class="col-lg-7 personal-info tab-pane fade show active" id="v-pills-home" role="tabpanel"
         aria-labelledby="v-pills-home-tab">
+        <h3>Persoonlijke informatie</h3>
+
+        <!-- left column -->
+        <div class="form-group pt-1">
+          <div class="col-md-9">
+            <div class="text-center">
+              <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
+                name="avatar" width="150" height="150">
+              <h6>Kies een andere profielfoto...</h6>
+
+              <input type="file" class="form-control" name="avatar" id="avatar">
+            </div>
+          </div>
+        </div>
+
         <form role="form" method="post" action="/users/update/{{$user->id}}" enctype="multipart/form-data">
           {{method_field('patch')}}
           {{ csrf_field() }}
-          <h3>Persoonlijke informatie</h3>
-
-          <!-- left column -->
-          <div class="form-group pt-1">
-            <div class="col-md-9">
-              <div class="text-center">
-                <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
-                  name="avatar" width="150" height="150">
-                <h6>Kies een andere profielfoto...</h6>
-
-                <input type="file" class="form-control" name="avatar" id="avatar">
-              </div>
-            </div>
-          </div>
-
           <div class="form-group">
             <label class="col-lg-7 control-label">Voornaam:</label>
             <div class="col-lg-10">

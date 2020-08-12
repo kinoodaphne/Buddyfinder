@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Friend;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -33,7 +35,7 @@ class UserController extends Controller
         $user->year = $request->input('year');
         $user->study_field = $request->input('study_field');
         $user->bio = $request->input('bio');
-        $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
+        // $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
         $user->password = \Hash::make($request->input('password'));
         $user->save();
 
@@ -162,7 +164,7 @@ class UserController extends Controller
             $user->buddy = "Searcher";
         }
         $user->bio = $request->input('bio');
-        $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
+        // $user->profile_picture = "https://images.unsplash.com/photo-1586162258051-1c33862abf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80";
         $user->password = $request->input('password');
 
         $user->save();

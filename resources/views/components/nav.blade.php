@@ -37,9 +37,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @auth
-                    @if(!empty(session('name')))
-                    <b>{{ session('name') }}</b>
-                    @endif
+                    <b>{{ Auth::user()->name }}</b>
                     @endauth
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
