@@ -26,7 +26,7 @@
         @foreach($details as $user)
         <div class="col-sm-3">
             <div class="card-container">
-                <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
+                <img src="/uploads/avatars/{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
