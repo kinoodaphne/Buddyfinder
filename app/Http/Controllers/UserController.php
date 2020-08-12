@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Friend;
+use Image;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -243,6 +244,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = \App\User::find($id);
+
+        if ($request->hasFile('avatar')) {
+             $avatar = $request->file('avatar');
+             $filename = time() . '.' . $avatar->getClientOriginalExtension();
+
+             Image::make($avatar)->resize(300,300)->save(public_path('uploads/avatars/' . $filename));
+
+             $user->profile_picture = $filename;
+        }
+
         $user->name = $request->get('firstName');
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
