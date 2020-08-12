@@ -10,7 +10,7 @@
     <!-- left column -->
     <div class="col-md-2">
         <div class="text-center">
-            <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar"
+            <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar"
                 width="150" height="150">
         </div>
     </div>

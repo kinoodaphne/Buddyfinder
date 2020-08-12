@@ -50,7 +50,6 @@
         <div class="col-sm-3">
             <div class="card-container">
                 <img src="{{ $sender_profilePicture }}" class="card-img-top stretchy" alt="...">
-                <!-- <img src="/images/profile.jpeg" class="card-img-top" alt="..."> -->
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $sender_name }} {{ $sender_lastName }}</h5>

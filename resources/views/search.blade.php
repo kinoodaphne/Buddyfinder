@@ -27,7 +27,6 @@
         <div class="col-sm-3">
             <div class="card-container">
                 <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
-                <!-- <img src="/images/profile.jpeg" class="card-img-top" alt="..."> -->
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>

@@ -40,7 +40,7 @@
         <div class="form-group pt-1">
           <div class="col-md-9">
             <div class="text-center">
-              <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
+              <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar"
                 name="avatar" width="150" height="150">
               <h6>Kies een andere profielfoto...</h6>
 

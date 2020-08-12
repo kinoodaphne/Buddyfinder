@@ -3,7 +3,7 @@
 @section('content')
 <div class="sidenav">
     <div class="login-main-text">
-        <img src="/images/rocket.png" alt="logo" width="150px" heigh="150px">
+        <img src="{{ asset('images/rocket.png') }}" alt="logo" width="150px" heigh="150px">
         <h2>IMDBUDDY<br> Meld aan</h2>
         <p>Login or register from here to access.</p>
     </div>
@@ -11,7 +11,7 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-main-text-mobile">
-            <img src="/images/rocket.png" alt="logo" width="150px" heigh="150px">
+            <img src="{{ asset('images/rocket.png') }}" alt="logo" width="150px" heigh="150px">
             <h2>IMDBUDDY<br> Meld aan</h2>
             <p>Login or register from here to access.</p>
         </div>
