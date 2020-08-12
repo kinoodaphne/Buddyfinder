@@ -36,6 +36,7 @@
             <li class="nav-item active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/uploads/avatars/{{ Auth::user()->profile_picture }}" alt="" class="img-nav">
                     @auth
                     <b>{{ Auth::user()->name }}</b>
                     @endauth
