@@ -10,8 +10,8 @@
     <!-- left column -->
     <div class="col-md-2">
         <div class="text-center">
-            <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar"
-                width="150" height="150">
+            <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar"
+                id="avatar" name="avatar" width="150" height="150">
         </div>
     </div>
     <!-- edit form column -->
@@ -36,6 +36,18 @@
         <div class="form-group">
             <div class="col-lg-8">
                 Keuzerichting : {{ $user->study_field }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-8">
+                Intresses :
+                <ul>
+                    <li>Muziek: <b>{{ $user->music }}</b></li>
+                    <li>Boeken: <b>{{ $user->books }}</b></li>
+                    <li>Games: <b>{{ $user->hobbies }}</b></li>
+                    <li>Series: <b>{{ $user->series }}</b></li>
+                    <li>Reizen: <b>{{ $user->travel }}</b></li>
+                </ul>
             </div>
         </div>
         <div class="form-group">
