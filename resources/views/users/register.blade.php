@@ -57,12 +57,24 @@
                 </div>
                 <div class="form-group">
                     <label>Keuzerichting:</label>
-                    <input class="form-control" type="text" name="study_field" id="study_field"
-                        placeholder="Design, Development, Both">
+                    <select name="study_field" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        <option>Kies je richting</option>
+                        <option>Design</option>
+                        <option>Development</option>
+                        <option>UX</option>
+                        <option>UI</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Studie jaar:</label>
-                    <input class="form-control" type="text" name="year" id="year" placeholder="1IMD, 2IMD, 3IMD">
+                    <select name="year" id="year" class="form-control dropdown-toggle" type="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <option>Kies je jaar</option>
+                        <option>1IMD</option>
+                        <option>2IMD</option>
+                        <option>3IMD</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Wachtwoord</label>

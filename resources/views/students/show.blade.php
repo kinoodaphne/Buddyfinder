@@ -30,12 +30,7 @@
         </div>
         <div class="form-group">
             <div class="col-lg-8">
-                Jaar : {{ $user->year }}
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-8">
-                Keuzerichting : {{ $user->study_field }}
+                {{ $user->year }} - {{ $user->study_field }}
             </div>
         </div>
         <div class="form-group">
@@ -44,7 +39,7 @@
                 <ul>
                     <li>Muziek: <b>{{ $user->music }}</b></li>
                     <li>Boeken: <b>{{ $user->books }}</b></li>
-                    <li>Games: <b>{{ $user->hobbies }}</b></li>
+                    <li>Games: <b>{{ $user->gaming }}</b></li>
                     <li>Series: <b>{{ $user->series }}</b></li>
                     <li>Reizen: <b>{{ $user->travel }}</b></li>
                 </ul>
@@ -52,7 +47,7 @@
         </div>
         <div class="form-group">
             <div class="col-lg-8">
-                Over mezelf : {{ $user->bio }}
+                Over mezelf : <br>{{ $user->bio }}
             </div>
         </div>
     </div>

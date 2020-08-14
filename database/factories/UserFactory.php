@@ -24,14 +24,23 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'location' => $faker->state,
         'year' => $faker->randomElement(['1IMD', '2IMD', '3IMD',]),
-        'study_field' => $faker->text,
-        'music' => $faker->text,
-        'hobbies' => $faker->text,
-        'series' => $faker->text,
-        'gaming' => $faker->text,
-        'books' =>$faker->text,
-        'travel' => $faker->text,
+
+        'study_field' => $faker->randomElement(['Design', 'Development', 'UX', 'UI']),
+
+        'music' => $faker->randomElement(['Electro', 'Rock', 'Jazz', 'Dubstep', 'Blues', 'Techno', 'Country', 'Indie', 'Pop', 'Metal', 'Andere',]),
+
+        'hobbies' => $faker->randomElement(['Actie', 'Avontuur', 'Komedie', 'First person', 'Horror', 'Party', 'Puzzle', 'Racing', 'Sport', 'Strategie', 'Shooter', 'Andere',]),
+
+        'series' => $faker->randomElement(['Internationaal', 'Nationaal', 'Nieuws', 'Quiz', 'Sport', 'Andere',]),
+
+        'gaming' => $faker->randomElement(['Actie', 'Avontuur', 'Komedie', 'First person', 'Horror', 'Party', 'Puzzle', 'Racing', 'Sport', 'Strategie', 'Shooter', 'Andere',]),
+
+        'books' =>$faker->randomElement(['Actie', 'Avontuur', 'Komedie', 'Comics', 'Detective', 'Drama', 'Graphic novels', 'Horror', 'Romantiek', 'Thriller', 'Andere',]),
+
+        'travel' => $faker->randomElement(['Noord-Amerika', 'Zuid-Amerika', 'Europa', 'Afrika', 'Azië', 'Australië', 'Antartica',]),
+
         'buddy' => $faker->randomElement(['Buddy', 'Searcher']),
+
         'bio' => $faker->realText(180),
         'profile_picture' => $faker->randomElement(['BG_1.jpg', 'BG_2.jpg', 'BG_3.jpg', 'BG_4.jpg', 'BG_5.jpg', 'BG_6.jpg', 'BG_7.jpg', 'BG_8.jpg']),
         'email_verified_at' => now(),

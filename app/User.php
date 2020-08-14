@@ -95,6 +95,11 @@ class User extends Authenticatable
         $getUserId = \App\User::select('travel')->where('id', $user_id)->first();
         return $getUserId->travel;
     }
+
+    public static function getUserBooks($user_id) {
+        $getUserId = \App\User::select('books')->where('id', $user_id)->first();
+        return $getUserId->books;
+    }
     
     public static function getUserBuddy($user_id) {
         $getUserId = \App\User::select('buddy')->where('id', $user_id)->first();
