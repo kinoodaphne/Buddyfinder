@@ -58,6 +58,7 @@ Route::get('/profile/{user}', 'UserController@profile');
  */
 Route::get('/users/edit/{user}', 'UserController@edit');
 Route::patch('/users/update/{user}', 'UserController@update');
+Route::patch('/users/update-tags/{user}', 'UserController@updateTags');
 
 /**
  * Show the search page with the results

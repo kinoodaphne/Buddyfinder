@@ -78,115 +78,227 @@
               <input class="form-control" type="text" value="{{ $user->location }}" name="location" id="location">
             </div>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label class="col-lg-7 control-label">Keuzerichting:</label>
             <div class="col-lg-10">
-              <input class="form-control" type="text" value="{{ $user->study_field }}" name="study_field"
-                id="study_field" placeholder="Design, Development, Both">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-7 control-label">Studie jaar:</label>
-            <div class="col-lg-10">
-              <input class="form-control" type="text" value="{{ $user->year }}" name="year" id="year"
-                placeholder="1IMD, 2IMD, 3IMD">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="buddy">
-              <label class="form-check-label" for="inlineRadio1">Help een buddy</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="searcher">
-              <label class="form-check-label" for="inlineRadio2">Zoek een buddy</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-7 control-label">Korte omschrijving:</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="8" id="bio" name="bio">{{ $user->bio }}</textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
+              <select name="study_field" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+                <option>{{ $user->study_field }}</option>
+          <option>Design</option>
+          <option>Development</option>
+          <option>UX</option>
+          <option>UI</option>
+          </select>
       </div>
-      </form>
-
-      <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-profile" role="tabpanel"
-        aria-labelledby="v-pills-profile-tab">
-        <h3>Interesses</h3>
-        <form method=" post" action="changePassword">
-          <div class="form-group">
-            <label class="col-md-6 control-label">Label</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" name="currentPassword" id="password">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">Label</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPassword">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">Label</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label"></label>
-            <div class="col-md-10">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
-        </form>
+    </div> --}}
+    <div class="form-group">
+      <label class="col-lg-7 control-label">Studie jaar:</label>
+      <div class="col-lg-10">
+        {{-- <input class="form-control" type="text" value="{{ $user->year }}" name="year" id="year"
+        placeholder="1IMD, 2IMD, 3IMD"> --}}
+        <select name="year" id="year" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="true">
+          <option>{{ $user->year }}</option>
+          <option>1IMD</option>
+          <option>2IMD</option>
+          <option>3IMD</option>
+        </select>
       </div>
-
-      <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-password" role="tabpanel"
-        aria-labelledby="v-pills-password-tab">
-        <h3>Wachtwoord</h3>
-        <!-- <form method="post" action="">
-          <div class="form-group">
-            <label class="col-md-6 control-label">Current password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" name="currentPassword" id="password" value="{{ $user->password }}">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">New password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPassword">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label">Confirm password:</label>
-            <div class="col-md-10">
-              <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-md-6 control-label"></label>
-            <div class="col-md-10">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
-        </form> -->
+    </div>
+    <div class="form-group">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="buddy">
+        <label class="form-check-label" for="inlineRadio1">Help een buddy</label>
       </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="searcher">
+        <label class="form-check-label" for="inlineRadio2">Zoek een buddy</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-7 control-label">Korte omschrijving:</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="8" id="bio" name="bio">{{ $user->bio }}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label"></label>
+      <div class="col-md-8">
+        <input type="submit" class="btn btn-primary" value="Save Changes">
+        <span></span>
+        <input type="submit" class="btn btn-default" value="Cancel">
+      </div>
+    </div>
+    </form>
+  </div>
 
+  <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-profile" role="tabpanel"
+    aria-labelledby="v-pills-profile-tab">
+    <form role="form" method="post" action="/users/update-tags/{{$user->id}}" enctype="multipart/form-data">
+      {{method_field('patch')}}
+      {{ csrf_field() }}
+      <h3>Interesses</h3>
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Keuzerichting:</label>
+        <div class="col-lg-10">
+          <select name="study_field" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->study_field }}</option>
+            <option>Design</option>
+            <option>Development</option>
+            <option>UX</option>
+            <option>UI</option>
+          </select>
+        </div>
+      </div>
+      {{-- <div class="form-group">
+        <label class="col-lg-7 control-label">Films:</label>
+        <div class="col-lg-10">
+          <select name="movies" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->movies }}</option>
+            <option>Design</option>
+            <option>Development</option>
+            <option>UX</option>
+            <option>UI</option>
+          </select>
+        </div>
+      </div> --}}
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Muziek:</label>
+        <div class="col-lg-10">
+          <select name="music" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->music }}</option>
+            <option>Electro</option>
+            <option>Rock</option>
+            <option>Jazz</option>
+            <option>Dubstep</option>
+            <option>Blues</option>
+            <option>Techno</option>
+            <option>Country</option>
+            <option>Indie</option>
+            <option>Pop</option>
+            <option>Metal</option>
+            <option>Andere</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Boeken:</label>
+        <div class="col-lg-10">
+          <select name="books" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->books }}</option>
+            <option>Actie</option>
+            <option>Avontuur</option>
+            <option>Komedie</option>
+            <option>Comics</option>
+            <option>Detective</option>
+            <option>Drama</option>
+            <option>Graphic novels</option>
+            <option>Horror</option>
+            <option>Romantiek</option>
+            <option>Thriller</option>
+            <option>Andere</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Games:</label>
+        <div class="col-lg-10">
+          <select name="hobbies" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->hobbies }}</option>
+            <option>Actie</option>
+            <option>Avontuur</option>
+            <option>Komedie</option>
+            <option>First person</option>
+            <option>Horror</option>
+            <option>Party</option>
+            <option>Puzzle</option>
+            <option>Racing</option>
+            <option>Sport</option>
+            <option>Strategie</option>
+            <option>Shooter</option>
+            <option>Andere</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Series:</label>
+        <div class="col-lg-10">
+          <select name="series" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->series }}</option>
+            <option>Internationaal</option>
+            <option>Nationaal</option>
+            <option>Nieuws</option>
+            <option>Quiz</option>
+            <option>Sport</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-7 control-label">Reizen:</label>
+        <div class="col-lg-10">
+          <select name="travel" class="form-control dropdown-toggle" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            <option>{{ $user->travel }}</option>
+            <option>Noord-Amerika</option>
+            <option>Zuid-Amerika</option>
+            <option>Europa</option>
+            <option>Afrika</option>
+            <option>Azië</option>
+            <option>Australië</option>
+            <option>Antartica</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-6 control-label"></label>
+        <div class="col-md-10">
+          <input type="submit" class="btn btn-primary" value="Save Changes">
+          <span></span>
+          <input type="submit" class="btn btn-default" value="Cancel">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-password" role="tabpanel"
+    aria-labelledby="v-pills-password-tab">
+    <h3>Wachtwoord</h3>
+    <div class="form-group">
+      <label class="col-md-6 control-label">Current password:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="password" name="currentPassword" id="password" value="{{ $user->password }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-6 control-label">New password:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="password" id="password" name="newPassword">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-6 control-label">Confirm password:</label>
+      <div class="col-md-10">
+        <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-6 control-label"></label>
+      <div class="col-md-10">
+        <input type="submit" class="btn btn-primary" value="Save Changes">
+        <span></span>
+        <input type="submit" class="btn btn-default" value="Cancel">
+      </div>
     </div>
   </div>
+
+</div>
+</div>
 </div>
 <hr>
 @endsection

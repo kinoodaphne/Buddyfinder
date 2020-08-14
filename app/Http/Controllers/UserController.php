@@ -260,14 +260,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->year = $request->input('year');
         $user->location = $request->input('location');
-        $user->study_field = $request->input('study_field');
         $user->year = $request->input('year');
-        $user->music = $request->input('music');
-        $user->hobbies = $request->input('hobbies');
-        $user->series = $request->input('series');
-        $user->gaming = $request->input('gaming');
-        $user->books = $request->input('books');
-        $user->travel = $request->input('travel');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
             $user->buddy = "Buddy";
@@ -276,6 +269,27 @@ class UserController extends Controller
         }
         $user->bio = $request->input('bio');
 
+        if ($user->save()) {
+            $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
+        } else {
+            $request->session()->flash('message-error', 'Oeps, hier ging iets fout!');
+        }
+
+        return back();
+    }
+
+    public function updateTags(Request $request, $id)
+    {
+        $user = \App\User::find($id);
+
+        $user->study_field = $request->input('study_field');
+        $user->music = $request->input('music');
+        $user->hobbies = $request->input('hobbies');
+        $user->series = $request->input('series');
+        $user->gaming = $request->input('gaming');
+        $user->books = $request->input('books');
+        $user->travel = $request->input('travel');
+        
         if ($user->save()) {
             $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
         } else {
