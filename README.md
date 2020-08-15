@@ -1,5 +1,8 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
+## Note-taking for this project
+[Notion](https://www.notion.so/dabenie/Advanced-webtech-b2f75a2a0db24697a7578dc1437c8104)
+
 ## Guideline on developing this app
 
 A Laravel app designed and developed for a final school project. The assignment is the following.
