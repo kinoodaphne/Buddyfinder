@@ -18,6 +18,7 @@
     <div class="col-md-8 personal-info">
         <h3>{{ $user->name }} {{ $user->lastName }}</h3>
         <p class="pb-2">{{ $user->buddy }}</p>
+
         <div class="form-group">
             <div class="col-lg-8">
                 Woonplaats: {{ $user->location }}
@@ -47,7 +48,13 @@
         </div>
         <div class="form-group">
             <div class="col-lg-8">
-                Over mezelf : <br>{{ $user->bio }}
+                @if (!empty($user->bio))
+                Over mezelf : <br> {{ $user->bio }}
+                @else
+                Over mezelf : <br>
+                <p class="text-muted">Oops, het lijkt erop dat deze persoon nog
+                    geen weetjes heeft prijsgegeven.</p>
+                @endif
             </div>
         </div>
     </div>
