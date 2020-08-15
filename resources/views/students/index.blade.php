@@ -30,7 +30,7 @@
 
         <div class="col-sm-3">
             <div class="card-container">
-                <img src="/uploads/avatars/{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
+                <img src="/uploads/avatars/{{ $user->profile_picture }}" class="card-img-top rounded" alt="...">
 
             </div>
             <div class="card-body">
