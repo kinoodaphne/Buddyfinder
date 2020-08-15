@@ -46,7 +46,6 @@
               <div class="text-center">
                 <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar"
                   id="avatar" name="avatar" width="150" height="150">
-                <h6>Kies een andere profielfoto...</h6>
 
                 <input type="file" class="form-control" name="avatar" id="avatar">
               </div>
@@ -109,9 +108,9 @@
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
+              <input type="submit" class="btn btn-primary" value="Opslaan">
               <span></span>
-              <input type="submit" class="btn btn-default" value="Cancel">
+              <input type="submit" class="btn btn-default" value="Annuleren">
             </div>
           </div>
         </form>
@@ -244,9 +243,9 @@
     <div class="form-group">
       <label class="col-md-6 control-label"></label>
       <div class="col-md-10">
-        <input type="submit" class="btn btn-primary" value="Save Changes">
+        <input type="submit" class="btn btn-primary" value="Opslaan">
         <span></span>
-        <input type="submit" class="btn btn-default" value="Cancel">
+        <input type="submit" class="btn btn-default" value="Annuleren">
       </div>
     </div>
     </form>
@@ -254,33 +253,37 @@
 
   <div class="col-lg-5 personal-info tab-pane fade" id="v-pills-password" role="tabpanel"
     aria-labelledby="v-pills-password-tab">
-    <h3>Wachtwoord</h3>
-    <div class="form-group">
-      <label class="col-md-6 control-label">Current password:</label>
-      <div class="col-md-10">
-        <input class="form-control" type="password" name="currentPassword" id="password" value="{{ $user->password }}">
+    <h3>Wijzig wachtwoord</h3>
+    <form role="form" method="post" action="/users/update-password/{{$user->id}}" enctype="multipart/form-data">
+      {{method_field('patch')}}
+      {{ csrf_field() }}
+      <div class="form-group">
+        <label class="col-md-8 control-label">Huidig wachtwoord:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="password" name="oldPassword" id="password">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-6 control-label">New password:</label>
-      <div class="col-md-10">
-        <input class="form-control" type="password" id="password" name="newPassword">
+      <div class="form-group">
+        <label class="col-md-8 control-label">Nieuw wachtwoord:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="password" id="password" name="newPassword">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-6 control-label">Confirm password:</label>
-      <div class="col-md-10">
-        <input class="form-control" type="password" id="password" name="newPasswordConfirmation">
+      <div class="form-group">
+        <label class="col-md-8 control-label">Bevestig wachtwoord:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="password" id="password" name="passwordConfirmation">
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-6 control-label"></label>
-      <div class="col-md-10">
-        <input type="submit" class="btn btn-primary" value="Save Changes">
-        <span></span>
-        <input type="submit" class="btn btn-default" value="Cancel">
+      <div class="form-group">
+        <label class="col-md-6 control-label"></label>
+        <div class="col-md-10">
+          <input type="submit" class="btn btn-primary" value="Opslaan">
+          <span></span>
+          <input type="submit" class="btn btn-default" value="Annuleren">
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 
 </div>

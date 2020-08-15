@@ -54,11 +54,15 @@ Route::get('/profile/{user}', 'UserController@profile');
 
 
 /**
- * Show the edit page of your profile and update your profile
+ * - Show the edit page of your profile
+ * - Update your account information
+ * - Update your intrests
+ * - Update you password
  */
 Route::get('/users/edit/{user}', 'UserController@edit');
 Route::patch('/users/update/{user}', 'UserController@update');
 Route::patch('/users/update-tags/{user}', 'UserController@updateTags');
+Route::patch('/users/update-password/{user}', 'UserController@updatePassword');
 
 /**
  * Show the search page with the results

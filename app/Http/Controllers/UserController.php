@@ -299,6 +299,33 @@ class UserController extends Controller
         return back();
     }
 
+    public function updatePassword(Request $request, $id)
+    {
+
+        $validate = $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required|required_with:passwordConfirmation|same:passwordConfirmation',
+            'passwordConfirmation' => 'required',
+        ]);
+
+        $user = \App\User::find($id);
+
+        if ($user) {
+            if (\Hash::check($request['oldPassword'], $user->password)) {
+                $user->password = \Hash::make($request->input('newPasword'));
+
+                $user->save();
+                $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
+                return back();
+            } else {
+                // echo($request['oldPassword']."<br>". $user->password);
+                // die;
+                $request->session()->flash('message-error', 'Je wachtwoorden komen niet overeen!');
+                return back();
+            }
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
