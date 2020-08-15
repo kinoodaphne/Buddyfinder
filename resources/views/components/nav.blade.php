@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">
-        <img src="{{ asset('images/rocket.png') }}" width="30" height="30" class="d-inline-block align-top" alt="IMDbuddy">
+        <img src="{{ asset('images/rocket.png') }}" width="30" height="30" class="d-inline-block align-top"
+            alt="IMDbuddy">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -20,24 +22,23 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/buddies/{{ session('uid') }}">Buddies</a>
+                <a class="nav-link" href="/buddies">Buddies</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/requests">Verzoeken
-                    {{-- <span class="<?php if ($getRequestNumber > 0) {
-                                            echo 'redBadge';
-                                        } else {
-                                            echo 'badge';
-                                        } ?>">
-                            <?php echo $getRequestNumber; ?></span> --}}
+                    @if (\App\Friend::newFriendCount() > 0)
+                    <span class="redBadge">
+                        {{ \App\Friend::newFriendCount() }}
+                    </span>
+                    @endif
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/uploads/avatars/{{ Auth::user()->profile_picture }}" alt="" class="img-nav">
                     @auth
-                    @if(!empty(session('name')))
-                    <b>{{ session('name') }}</b>
-                    @endif
+                    <b>{{ Auth::user()->name }}</b>
                     @endauth
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">

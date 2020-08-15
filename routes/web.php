@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
+ * CRUD
+ * 
+ * Create
+ * Read
+ * Update
+ * Delete
+ */
+
+/**
  * Registering a user to the platform
  */
 Route::get('/user/register', 'UserController@register');
@@ -45,10 +54,15 @@ Route::get('/profile/{user}', 'UserController@profile');
 
 
 /**
- * Show the edit page of your profile and update your profile
+ * - Show the edit page of your profile
+ * - Update your account information
+ * - Update your intrests
+ * - Update you password
  */
 Route::get('/users/edit/{user}', 'UserController@edit');
 Route::patch('/users/update/{user}', 'UserController@update');
+Route::patch('/users/update-tags/{user}', 'UserController@updateTags');
+Route::patch('/users/update-password/{user}', 'UserController@updatePassword');
 
 /**
  * Show the search page with the results
@@ -56,3 +70,10 @@ Route::patch('/users/update/{user}', 'UserController@update');
 Route::any('/search', 'UserController@search');
 
 Route::match(['get', 'post'], '/add-friend/{userid}', 'UserController@addFriend');
+Route::match(['get', 'post'], '/remove-friend/{userid}', 'UserController@removeFriend');
+
+Route::get('/requests', 'UserController@friendsRequests');
+Route::get('/accept-request/{userid}', 'UserController@acceptRequest');
+Route::get('/cancel-request/{userid}', 'UserController@cancelRequest');
+
+Route::get('/buddies', 'UserController@showBuddies');

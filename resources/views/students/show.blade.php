@@ -10,63 +10,73 @@
     <!-- left column -->
     <div class="col-md-2">
         <div class="text-center">
-            <img src="{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar" id="avatar" name="avatar"
-                width="150" height="150">
+            <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar"
+                id="avatar" name="avatar" width="150" height="150">
         </div>
     </div>
     <!-- edit form column -->
     <div class="col-md-8 personal-info">
-        <h3>Persoonlijke informatie</h3>
+        <h3>{{ $user->name }} {{ $user->lastName }}</h3>
+        <p class="pb-2">{{ $user->buddy }}</p>
 
         <div class="form-group">
-            <label class="col-lg-3 control-label">Voornaam:</label>
             <div class="col-lg-8">
-                <input readonly class="form-control-plaintext" type="text" value="{{ $user->name }}" name="name"
-                    id="name">
+                Woonplaats: {{ $user->location }}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Achternaam:</label>
             <div class="col-lg-8">
-                <input readonly class="form-control-plaintext" type="text" value="{{ $user->lastName }}" name="lastName"
-                    id="lastName">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-                <input readonly class="form-control-plaintext" type="text" value="{{ $user->email }}" name="email"
-                    id="email">
+                Email: {{ $user->email }}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Woonplaats:</label>
             <div class="col-lg-8">
-                <input readonly class="form-control-plaintext" type="text" value="{{ $user->location }}" name="location"
-                    id="location">
+                {{ $user->year }} - {{ $user->study_field }}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Keuzerichting:</label>
             <div class="col-lg-8">
-                <input readonly class="form-control-plaintext" type="text" value="{{ $user->study_field }}"
-                    name="study_field" id="study_field">
+                Intresses :
+                <ul>
+                    <li>Muziek: <b>{{ $user->music }}</b></li>
+                    <li>Boeken: <b>{{ $user->books }}</b></li>
+                    <li>Games: <b>{{ $user->gaming }}</b></li>
+                    <li>Series: <b>{{ $user->series }}</b></li>
+                    <li>Reizen: <b>{{ $user->travel }}</b></li>
+                </ul>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Korte omschrijving:</label>
             <div class="col-lg-8">
-                <textarea readonly class="form-control-plaintext" rows="8" id="biography"
-                    name="biography">{{ $user->bio }}</textarea>
+                @if (!empty($user->bio))
+                Over mezelf : <br> {{ $user->bio }}
+                @else
+                Over mezelf : <br>
+                <p class="text-muted">Oops, het lijkt erop dat deze persoon nog
+                    geen weetjes heeft prijsgegeven.</p>
+                @endif
             </div>
         </div>
     </div>
     <div class="col-md-2">
+        @if (\Auth::check())
+        @if (\Auth::user()->id == $user->id)
+        <a href="/users/edit/{{ $user->id }}">
+            <button class="btn btn-primary">Bewerk profiel</button>
+        </a>
+        @else
         @if (!empty($friendRequest))
+        @if ( $friendRequest == "Verwijder" )
+        <a href="/remove-friend/{{ $user->id }}">
+            <button class="btn btn-outline-secondary">{{ $friendRequest }}</button>
+        </a>
+        @else
         <a href="/add-friend/{{ $user->id }}">
             <button class="btn btn-primary">{{ $friendRequest }}</button>
         </a>
+        @endif
+        @endif
+        @endif
         @endif
     </div>
     {{-- <div class="col-lg-2">

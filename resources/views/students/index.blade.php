@@ -19,24 +19,30 @@
         </div>
     </div>
     @if($flash = session('message'))
-    <div class="alert alert-success">{{ $flash }}</div>
+    @component('components/alert')
+    @slot('type', 'success')
+    {{ $flash }}
+    @endslot
+    @endcomponent
     @endif
     <div class="card-deck row row-table">
         @foreach ($users as $user)
 
         <div class="col-sm-3">
             <div class="card-container">
-                <img src="{{ $user->profile_picture }}" class="card-img-top stretchy" alt="...">
-                <!-- <img src="/images/profile.jpeg" class="card-img-top" alt="..."> -->
+                <img src="/uploads/avatars/{{ $user->profile_picture }}" class="card-img-top rounded" alt="...">
+
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
                 <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
                 <p class="card-text">{{ $user->buddy }}</p>
-                <p class="card-text">Films</p>
-                <p class="card-text">Racing</p>
-                <p class="card-text">{{ $user->study_field }}</p>
-                <p class="card-text">{{ $user->year }}</p>
+                <p class="card-text">{{ $user->year }} - {{ $user->study_field }}</p>
+                <p class="card-text">Muziek: <b>{{ $user->music }}</b></p>
+                <p class="card-text">Boeken: <b>{{ $user->books }}</b></p>
+                <p class="card-text">Games: <b>{{ $user->gaming }}</b></p>
+                <p class="card-text">Series: <b>{{ $user->series }}</b></p>
+                <p class="card-text">Reizen: <b>{{ $user->travel }}</b></p>
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
             </div>
@@ -44,4 +50,5 @@
         @endforeach
     </div>
 </div>
+<hr>
 @endsection

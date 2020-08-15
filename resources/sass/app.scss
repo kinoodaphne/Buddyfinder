@@ -13,6 +13,13 @@
     padding-top: 4rem;
 }
 
+body {
+    color: #565656;
+}
+
+.bg-dark {
+    background-color: #204051 !important;
+}
 .container-card {
     padding-bottom: 64px;
 }
@@ -31,20 +38,36 @@
     color: #007bff !important;
 }
 
+.text-black {
+    color: black;
+}
+
 a {
     color: white;
 }
 
+.nav-link .img-nav {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 .btn-primary {
-    background-color: #078080;
+    background-color: #204051;
+    border: none;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #204051 !important;
     border: none;
 }
 
 .btn:hover {
-    background-color: #0a5a5a;
+    background-color: #0f232e;
 }
 
-.stretchy {
-    width: 260px;
-    height: 150px;
+// LOGIN - REGISTER
+.btn-color:hover {
+    background-color: #0f232e;
+    color: #ffffff;
 }
