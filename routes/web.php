@@ -77,3 +77,8 @@ Route::get('/accept-request/{userid}', 'UserController@acceptRequest');
 Route::get('/cancel-request/{userid}', 'UserController@cancelRequest');
 
 Route::get('/buddies', 'UserController@showBuddies');
+
+/**
+ * Delete your user account
+ */
+Route::delete('/users/delete/{id}', 'UserController@destroy');

@@ -332,14 +332,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request)
     {
-        // $user = \Auth::user();
-        $user = \App\User::find($request->user_id);
+        $user = \Auth::user();
+        // $user = \App\User::find($request->user_id);
 
         $user->delete();
-        $request->session()->flash('message', 'Student has been deleted');
-        return redirect('/');
+        return redirect('/user/login');
     }
 
     public function addFriend($userid) {
