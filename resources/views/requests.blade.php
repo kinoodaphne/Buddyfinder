@@ -6,9 +6,6 @@
 @component('components/nav')
 @endcomponent
 
-@component('components/search')
-@endcomponent
-
 @section('content')
 <div class="container-top container-card">
     <div class="row">
