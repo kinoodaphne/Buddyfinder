@@ -169,14 +169,6 @@ class UserController extends Controller
 
         $user->save();
 
-        /**
-         * Message will be displayed all the time
-         * $request->session()->put('message', 'Permament message');
-         * 
-         * Message will be removed
-         * $request->session()->pull('message', 'Permament message');
-         */
-
         return redirect('/');
     }
 
@@ -318,8 +310,6 @@ class UserController extends Controller
                 $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
                 return back();
             } else {
-                // echo($request['oldPassword']."<br>". $user->password);
-                // die;
                 $request->session()->flash('message-error', 'Je wachtwoorden komen niet overeen!');
                 return back();
             }
@@ -335,7 +325,6 @@ class UserController extends Controller
     public function destroy(Request $request)
     {
         $user = \Auth::user();
-        // $user = \App\User::find($request->user_id);
 
         $user->delete();
         return redirect('/user/login');
