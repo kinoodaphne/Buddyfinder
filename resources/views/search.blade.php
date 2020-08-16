@@ -32,20 +32,14 @@
                 <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
                 <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
                 <p class="card-text">{{ $user->buddy }}</p>
-                <p class="card-text">Films</p>
-                <p class="card-text">Racing</p>
-                <p class="card-text">{{ $user->study_field }}</p>
-                <p class="card-text">{{ $user->year }}</p>
+                <p class="card-text">{{ $user->year }} - {{ $user->study_field }}</p>
+                <p class="card-text">Muziek: <b>{{ $user->music }}</b></p>
+                <p class="card-text">Boeken: <b>{{ $user->books }}</b></p>
+                <p class="card-text">Games: <b>{{ $user->gaming }}</b></p>
+                <p class="card-text">Series: <b>{{ $user->series }}</b></p>
+                <p class="card-text">Reizen: <b>{{ $user->travel }}</b></p>
 
                 <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
-
-                {{-- <?php
-                        if ($friend->checkIfFriends($user->getId(), $profile['id'])) {
-                            echo '';
-                        } else {
-                            echo '<button class="btn btn-primary"><a href="functions.php?action=send_req&id=' . $profile['id'] . '">Send Request</a></button>';
-                        }
-                        ?> --}}
             </div>
         </div>
         @endforeach

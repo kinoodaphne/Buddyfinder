@@ -11,7 +11,7 @@
     <div class="col-md-2">
         <div class="text-center">
             <img src="/uploads/avatars/{{ $user->profile_picture }}" class="avatar rounded-circle" alt="avatar"
-                id="avatar" name="avatar" width="150" height="150">
+                id="avatar" name="avatar">
         </div>
     </div>
     <!-- edit form column -->

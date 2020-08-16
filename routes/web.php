@@ -59,6 +59,11 @@ Route::patch('/users/update-password/{user}', 'UserController@updatePassword');
 Route::any('/search', 'UserController@search');
 
 /**
+ * Filter any results
+ */
+Route::any('/filter', 'UserController@filter');
+
+/**
  * - When on a user's profile, you can send them a friendrequest or if you're
  *   already friends, you can delete this friend
  */

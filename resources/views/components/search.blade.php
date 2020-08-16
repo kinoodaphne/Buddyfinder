@@ -1,109 +1,102 @@
 <div class="jumbotron">
   <section class="container">
-    <form action="" method="post">
+    <form action="/filter" method="post">
+      {{ csrf_field() }}
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="study_field">
                 <option>Selecteer je keuzerichting</option>
-                <option>Development</option>
                 <option>Design</option>
+                <option>Development</option>
+                <option>UX</option>
+                <option>UI</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="year">
                 <option>Selecteer een jaar</option>
-                <option>1 IMD</option>
-                <option>2 IMD</option>
-                <option>3 IMD</option>
+                <option>1IMD</option>
+                <option>2IMD</option>
+                <option>3IMD</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="music">
                 <option>Muziek</option>
-                <option>Gaming</option>
-                <option>Muziek</option>
-                <option>Hobbies</option>
-                <option>Series</option>
-                <option>Boeken</option>
-                <option>Reizen</option>
+                <option>Electro</option>
+                <option>Rock</option>
+                <option>Jazz</option>
+                <option>Dubstep</option>
+                <option>Blues</option>
+                <option>Techno</option>
+                <option>Country</option>
+                <option>Indie</option>
+                <option>Pop</option>
+                <option>Metal</option>
+                <option>Andere</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="books">
                 <option>Boeken</option>
-                <option>Gaming</option>
-                <option>Muziek</option>
-                <option>Hobbies</option>
-                <option>Series</option>
-                <option>Boeken</option>
-                <option>Reizen</option>
+                <option>Actie</option>
+                <option>Avontuur</option>
+                <option>Komedie</option>
+                <option>Comics</option>
+                <option>Detective</option>
+                <option>Drama</option>
+                <option>Graphic novels</option>
+                <option>Horror</option>
+                <option>Romantiek</option>
+                <option>Thriller</option>
+                <option>Andere</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="gaming">
                 <option>Games</option>
-                <option>Gaming</option>
-                <option>Muziek</option>
-                <option>Hobbies</option>
-                <option>Series</option>
-                <option>Boeken</option>
-                <option>Reizen</option>
+                <option>Actie</option>
+                <option>Avontuur</option>
+                <option>Komedie</option>
+                <option>First person</option>
+                <option>Horror</option>
+                <option>Party</option>
+                <option>Puzzle</option>
+                <option>Racing</option>
+                <option>Sport</option>
+                <option>Strategie</option>
+                <option>Shooter</option>
+                <option>Andere</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="series">
                 <option>Series</option>
-                <option>Gaming</option>
-                <option>Muziek</option>
-                <option>Hobbies</option>
-                <option>Series</option>
-                <option>Boeken</option>
-                <option>Reizen</option>
+                <option>Internationaal</option>
+                <option>Nationaal</option>
+                <option>Nieuws</option>
+                <option>Quiz</option>
+                <option>Sport</option>
+                <option>Andere</option>
               </select>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
+              <select class="form-control search-slt" id="exampleFormControlSelect1" name="travel">
                 <option>Reizen</option>
-                <option>Gaming</option>
-                <option>Muziek</option>
-                <option>Hobbies</option>
-                <option>Series</option>
-                <option>Boeken</option>
-                <option>Reizen</option>
+                <option>Noord-Amerika</option>
+                <option>Zuid-Amerika</option>
+                <option>Europa</option>
+                <option>Afrika</option>
+                <option>Azië</option>
+                <option>Australië</option>
+                <option>Antartica</option>
               </select>
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-12 p-2">
-              <button type="button" class="btn btn-primary wrn-btn">Zoek</button>
-            </div>
-            <p>
-              <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button"
-                aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2"
-                aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse"
-                aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both
-                elements</button>
-            </p>
-            <div class="row">
-              <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                  <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample2">
-                  <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                  </div>
-                </div>
-              </div>
+              <input type="submit" class="btn btn-primary wrn-btn" value="Zoek">
             </div>
           </div>
         </div>
