@@ -27,10 +27,10 @@ class UserController extends Controller
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
 
-        if (!preg_match('|@student.thomasmore.be|', $request->input('email'))) {
-            return back()->withErrors('Oei, je moet je studentenmail opgeven.');
-        } else {
+        if (preg_match('|@student.thomasmore.be|', $request->input('email')) || preg_match('|@thomasmore.be|', $request->input('email'))) {
             $user->email = $request->input('email');
+        } else {
+            return back()->withErrors('Oei, je moet je schoolmail opgeven.');
         }
 
         $fields = $request->input('inlineRadioOptions');
