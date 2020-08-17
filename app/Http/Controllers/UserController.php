@@ -117,7 +117,6 @@ class UserController extends Controller
 
         if (count($user) > 0) {
             return view('search')->withDetails($user)->withQuery($music, $series, $gaming, $books, $travel, $year, $study_field);
-            
         } else {
             $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
             return view('search');
@@ -132,7 +131,7 @@ class UserController extends Controller
     public function index()
     {
         if (session('uid') == true) {
-            $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->inRandomOrder()->get();
             return view('students/index', $data);
         } else {
             return redirect('/user/login');
@@ -239,7 +238,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if ($id != session('uid')) {
+        if ($id != \Auth::user()->id) {
             return redirect('/');
         } else {
             $data['user'] = \App\User::where('id', $id)->first();
