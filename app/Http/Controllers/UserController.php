@@ -26,7 +26,13 @@ class UserController extends Controller
         $user = new \App\User();
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
-        $user->email = $request->input('email');
+
+        if (!preg_match('|@student.thomasmore.be|', $request->input('email'))) {
+            return back()->withErrors('Oei, je moet je studentenmail opgeven.');
+        } else {
+            $user->email = $request->input('email');
+        }
+
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
             $user->buddy = "Buddy";
