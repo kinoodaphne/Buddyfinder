@@ -115,11 +115,13 @@ class UserController extends Controller
 
         $user = \App\User::where('music', 'LIKE', '%' . $music . '%')->orWhere('series', 'LIKE', '%' . $series . '%')->orWhere('gaming', 'LIKE', '%' . $gaming . '%')->orWhere('books', 'LIKE', '%' . $books . '%')->orWhere('travel', 'LIKE', '%' . $travel . '%')->orWhere('year', 'LIKE', '%' . $year . '%')->orWhere('study_field', 'LIKE', '%' . $study_field . '%')->get();
 
+        $data = [$music, $series, $gaming, $books, $travel, $year, $study_field];
+
         if (count($user) > 0) {
-            return view('search')->withDetails($user)->withQuery($music, $series, $gaming, $books, $travel, $year, $study_field);
+            return view('filter')->withDetails($user)->withQuery($data);
         } else {
             $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
-            return view('search');
+            return view('filter');
         }
     }
 
