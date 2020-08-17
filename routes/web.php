@@ -64,6 +64,11 @@ Route::any('/search', 'UserController@search');
 Route::any('/filter', 'UserController@filter');
 
 /**
+ * Show the suggestion page with the results
+ */
+Route::any('/suggestions', 'UserController@suggestions');
+
+/**
  * - When on a user's profile, you can send them a friendrequest or if you're
  *   already friends, you can delete this friend
  */

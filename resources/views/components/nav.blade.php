@@ -19,6 +19,8 @@
         <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
+            </li><li class="nav-item active">
+                <a class="nav-link" href="/suggestions">Suggesties</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/buddies">Buddies</a>

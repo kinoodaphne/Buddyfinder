@@ -125,6 +125,20 @@ class UserController extends Controller
         }
     }
 
+    public function suggestions(Request $request)
+    {
+        $buddy = \Auth::user()->buddy;
+
+        $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
+
+        if (count($user) > 0) {
+            return view('suggestions')->withDetails($user);
+        } else {
+            $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
+            return view('suggestions');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
