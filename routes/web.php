@@ -32,7 +32,7 @@ Route::post('/user/login', 'UserController@handleLogin');
 Route::get('/user/logout', 'UserController@logout');
 
 /**
- * Show users on the index page
+ * Show suggested users on the index page
  */
 Route::get('/', 'UserController@index');
 
@@ -64,9 +64,9 @@ Route::any('/search', 'UserController@search');
 Route::any('/filter', 'UserController@filter');
 
 /**
- * Show the suggestion page with the results
+ * Show all the users
  */
-Route::any('/suggestions', 'UserController@suggestions');
+Route::any('/all-users', 'UserController@allUsers');
 
 /**
  * - When on a user's profile, you can send them a friendrequest or if you're

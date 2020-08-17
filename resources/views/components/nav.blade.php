@@ -20,7 +20,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
             </li><li class="nav-item active">
-                <a class="nav-link" href="/suggestions">Suggesties</a>
+                <a class="nav-link" href="/all-users">Alle studenten</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/buddies">Buddies</a>
