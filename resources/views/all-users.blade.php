@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12">
             <br />
-            <h3 align="center">Zoekresultaten</h3>
+            <h3 align="center">Voorgestelde buddies</h3>
             <br />
         </div>
     </div>

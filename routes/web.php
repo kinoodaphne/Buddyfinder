@@ -14,15 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
- * CRUD
- * 
- * Create
- * Read
- * Update
- * Delete
- */
-
-/**
  * Registering a user to the platform
  */
 Route::get('/user/register', 'UserController@register');
@@ -41,7 +32,7 @@ Route::post('/user/login', 'UserController@handleLogin');
 Route::get('/user/logout', 'UserController@logout');
 
 /**
- * Show users on the index page
+ * Show suggested users on the index page
  */
 Route::get('/', 'UserController@index');
 
@@ -50,8 +41,6 @@ Route::get('/', 'UserController@index');
  */
 Route::get('/users/{user}', 'UserController@show');
 Route::get('/profile/{user}', 'UserController@profile');
-
-
 
 /**
  * - Show the edit page of your profile
@@ -69,11 +58,34 @@ Route::patch('/users/update-password/{user}', 'UserController@updatePassword');
  */
 Route::any('/search', 'UserController@search');
 
+/**
+ * Filter any results
+ */
+Route::any('/filter', 'UserController@filter');
+
+/**
+ * Show all the users
+ */
+Route::any('/all-users', 'UserController@allUsers');
+
+/**
+ * - When on a user's profile, you can send them a friendrequest or if you're
+ *   already friends, you can delete this friend
+ */
 Route::match(['get', 'post'], '/add-friend/{userid}', 'UserController@addFriend');
 Route::match(['get', 'post'], '/remove-friend/{userid}', 'UserController@removeFriend');
 
+/**
+ * - Show the request page where users want to be your friends
+ * - Accept or deny a friendrequest
+ * - Show the buddies page where you can see who you are friends with
+ */
 Route::get('/requests', 'UserController@friendsRequests');
 Route::get('/accept-request/{userid}', 'UserController@acceptRequest');
 Route::get('/cancel-request/{userid}', 'UserController@cancelRequest');
-
 Route::get('/buddies', 'UserController@showBuddies');
+
+/**
+ * Delete your user account
+ */
+Route::delete('/users/delete/{id}', 'UserController@destroy');

@@ -1,7 +1,4 @@
 @extends('layouts.index')
-{{-- <?php if (isset($status)) : ?>
-        <div class="status"><?php echo $status; ?></div>
-    <?php endif; ?> --}}
 
 @component('components/nav')
 @endcomponent
@@ -14,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             <br />
-            <h3 align="center">Zoekresultaten</h3>
+            <h3 align="center">Filter resultaten: </h3>
             <br />
         </div>
     </div>

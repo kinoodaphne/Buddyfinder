@@ -14,12 +14,13 @@
             {{ csrf_field() }}
             <span class="fa fa-search form-control-feedback"></span>
             <input class="form-control " type="search" name="search" placeholder="Zoek" aria-label="Search">
-            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
         </form>
         <div class="mr-auto"></div>
         <ul class="navbar-nav my-2 my-lg-0">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home</a>
+            </li><li class="nav-item active">
+                <a class="nav-link" href="/all-users">Alle studenten</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/buddies">Buddies</a>

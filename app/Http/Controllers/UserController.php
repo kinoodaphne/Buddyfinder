@@ -26,7 +26,13 @@ class UserController extends Controller
         $user = new \App\User();
         $user->name = $request->input('firstName');
         $user->lastName = $request->input('lastName');
-        $user->email = $request->input('email');
+
+        if (preg_match('|@student.thomasmore.be|', $request->input('email')) || preg_match('|@thomasmore.be|', $request->input('email'))) {
+            $user->email = $request->input('email');
+        } else {
+            return back()->withErrors('Oei, je moet je schoolmail opgeven.');
+        }
+
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
             $user->buddy = "Buddy";
@@ -74,8 +80,7 @@ class UserController extends Controller
              *  */
 
             return redirect('/');
-        }
-        else {
+        } else {
 
             return back()->withErrors('Oei, je email of wachtwoord lijkt fout te zijn. Probeer opnieuw!');
         }
@@ -103,15 +108,60 @@ class UserController extends Controller
         }
     }
 
+    public function filter(Request $request)
+    {
+        // Logic for searching people
+        $music = $request->get('music');
+        $series = $request->get('series');
+        $gaming = $request->get('gaming');
+        $books = $request->get('books');
+        $travel = $request->get('travel');
+        $year = $request->get('year');
+        $study_field = $request->get('study_field');
+
+
+        $user = \App\User::where(['music' => $music])->orWhere(['series' => $series, 'gaming' => $gaming, 'books' => $books, 'travel' => $travel, 'year' => $year, 'study_field' => $study_field])->get();
+
+
+        $data = [$music, $series, $gaming, $books, $travel, $year, $study_field];
+
+        if (count($user) > 0) {
+            return view('filter')->withDetails($user)->withQuery($data);
+        } else {
+            $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
+            return view('filter');
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (session('uid') == true) {
-            $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->get();
+            $buddy = \Auth::user()->buddy;
+
+            $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
+
+            if (count($user) > 0) {
+                return view('all-users')->withDetails($user);
+            } else {
+                $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
+                return view('all-users');
+            }
+        } else {
+            return redirect('/user/login');
+        }
+    }
+
+    public function allUsers()
+    {
+        if (session('uid') == true) {
+            $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->inRandomOrder()->get();
+
             return view('students/index', $data);
         } else {
             return redirect('/user/login');
@@ -169,14 +219,6 @@ class UserController extends Controller
 
         $user->save();
 
-        /**
-         * Message will be displayed all the time
-         * $request->session()->put('message', 'Permament message');
-         * 
-         * Message will be removed
-         * $request->session()->pull('message', 'Permament message');
-         */
-
         return redirect('/');
     }
 
@@ -188,32 +230,24 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if ( \Auth::check()){
-            // Check if the user is friend or not
-            $user_id = \Auth::user()->id;
-            $friend_id = \App\User::getUserid($id);
-            $friendCount = \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->count();
 
-            if ($friendCount > 0) {
-                $friendDetails = \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->first();
-                // echo $friendDetails->accepted;
-                // die;
-                if ( $friendDetails->accepted == 1) {
-                    echo "Friends";
-                    $friendRequest = "Verwijder";
-                } else {
-                    echo "Request send";
-                    $friendRequest = "Verzoek verzonden";
-                }
+        if (\Auth::check()) {
+            // Check if the user is friend or not
+            $alreadyFriends = \App\Friend::CheckIfFriends($id);
+            $checkRequestSender = \App\Friend::amIRequestSender($id);
+
+            if ($alreadyFriends) {
+                $friendRequest = "Verwijder";
+            } else if ($checkRequestSender) {
+                $friendRequest = "Verzoek verzonden";
             } else {
-                echo "Send request";
-                $friendRequest = 'Voeg toe';
+                $friendRequest = "Voeg toe";
             }
+
         } else {
             $friendRequest = "";
         }
 
-        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
         $data['user'] = \App\User::where('id', $id)->first();
         return view('students/show', $data)->with(compact('friendRequest'));
     }
@@ -226,7 +260,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if ($id != session('uid')) {
+        if ($id != \Auth::user()->id) {
             return redirect('/');
         } else {
             $data['user'] = \App\User::where('id', $id)->first();
@@ -246,12 +280,12 @@ class UserController extends Controller
         $user = \App\User::find($id);
 
         if ($request->hasFile('avatar')) {
-             $avatar = $request->file('avatar');
-             $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
 
-             Image::make($avatar)->resize(300,300)->save(public_path('uploads/avatars/' . $filename));
+            Image::make($avatar)->resize(300, 300)->save(public_path('uploads/avatars/' . $filename));
 
-             $user->profile_picture = $filename;
+            $user->profile_picture = $filename;
         }
 
         $user->name = $request->get('firstName');
@@ -289,7 +323,7 @@ class UserController extends Controller
         $user->gaming = $request->input('gaming');
         $user->books = $request->input('books');
         $user->travel = $request->input('travel');
-        
+
         if ($user->save()) {
             $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
         } else {
@@ -318,8 +352,6 @@ class UserController extends Controller
                 $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
                 return back();
             } else {
-                // echo($request['oldPassword']."<br>". $user->password);
-                // die;
                 $request->session()->flash('message-error', 'Je wachtwoorden komen niet overeen!');
                 return back();
             }
@@ -332,79 +364,79 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request)
     {
-        // $user = \Auth::user();
-        $user = \App\User::find($request->user_id);
+        $user = \Auth::user();
 
         $user->delete();
-        $request->session()->flash('message', 'Student has been deleted');
-        return redirect('/');
+        return redirect('/user/login');
     }
 
-    public function addFriend($userid) {
-        $userCount = \App\User::where('id', $userid)->count();
+    public function addFriend($userId)
+    {
+        $userCount = \App\User::where('id', $userId)->count();
 
-        if ( $userCount > 0 ) {
-            $user_id = \Auth::user()->id;
-            $friend_id = \App\User::getUserid($userid);
-
-            $friend = new \App\Friend;
-            $friend->user_id = $user_id;
-            $friend->friend_id = $friend_id;
-            $friend->save();
+        if ($userCount > 0) {
+            \App\Friend::sendFriendRequest($userId);
             return redirect()->back();
         } else {
             abort(404);
         }
     }
 
-    public function removeFriend($userid) {
+    public function removeFriend($userid)
+    {
         $userCount = \App\User::where('id', $userid)->count();
 
-        if ( $userCount > 0 ) {
+        if ($userCount > 0) {
             $user_id = \Auth::user()->id;
             $friend_id = \App\User::getUserid($userid);
 
-            \App\Friend::where(['user_id'=>$user_id, 'friend_id'=>$friend_id])->delete();
+            \App\Friend::where(['user_id' => $user_id, 'friend_id' => $friend_id])->delete();
             return redirect()->back();
         } else {
             abort(404);
         }
     }
 
-    public function friendsRequests() {
+    public function friendsRequests()
+    {
         $user_id = \Auth::user()->id;
         $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
 
         return view('requests')->with(compact('friendsRequests'));
     }
 
-    public function acceptRequest($sender_id) {
+    public function acceptRequest($sender_id)
+    {
         $receiver_id = \Auth::user()->id;
 
-        \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->update(['accepted' => 1]);
+        \App\Friend::where(['user_id' => $sender_id, 'friend_id' => $receiver_id])->update(['accepted' => 1]);
         return redirect()->back()->with('message-success', 'Verzoek geaccepteerd!');
     }
 
-    public function cancelRequest($sender_id) {
+    public function cancelRequest($sender_id)
+    {
         $receiver_id = \Auth::user()->id;
 
-        \App\Friend::where(['user_id'=>$sender_id, 'friend_id'=>$receiver_id])->delete();
+        \App\Friend::where(['user_id' => $sender_id, 'friend_id' => $receiver_id])->delete();
         return redirect()->back()->with('message-error', 'Verzoek geweigerd!');
     }
 
-    public function showBuddies() {
+    public function showBuddies()
+    {
+        
         $user_id = \Auth::user()->id;
-        $friendsCount = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->count();
+        $friendsCount = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->count();
 
         if ($friendsCount > 0) {
-            $friends = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 1])->get();
+            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
         } else {
-            $friends = \App\Friend::where(['user_id' => $user_id, 'accepted' => 1])->get();
+            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
         }
 
         return view('buddies')->with(compact('friends', 'friendsCount'));
+       
     }
-
+    
 }

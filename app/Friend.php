@@ -21,6 +21,107 @@ class Friend extends Model
         $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
 
         return $friendsRequests->count();
+    }
 
+    public static function CheckIfFriends($friendId) {
+
+        $myId = \Auth::user()->id;
+        $friend = \App\User::getUserid($friendId);
+
+        $friendCount = \App\Friend::where(['user_id' => $myId, 'friend_id' => $friend, 'accepted' => 1])->count();
+        $friendCount1 = \App\Friend::where(['user_id' => $friend, 'friend_id' => $myId, 'accepted' => 1])->count();
+
+        // echo ("my id: ". $myId . "<br> Friend id: ". $friend . "<br>".$friendCount1);
+        // die;
+        if ($friendCount === 1) {
+            /**
+             * You are friends
+             */
+            return true;
+        } else if ($friendCount1 === 1) {
+            return true;
+        } else {
+            /**
+             * You're not friends
+             */
+            return false;
+        }
+    }
+
+    public static function amIRequestSender($friendId) {
+        $myId = \Auth::user()->id;
+        $friend = \App\User::getUserid($friendId);
+
+        $checkRequest = \App\Friend::where(['user_id' => $myId, 'friend_id' => $friend])->count();
+
+        if ($checkRequest === 1) {
+            /**
+             * You are the sender
+             */
+            return true;
+        } else {
+            /**
+             * You are the receiver
+             */
+            return false;
+        }
+    }
+
+    public static function amIRequestReceiver($friendId) {
+        $myId = \Auth::user()->id;
+        $friend = \App\User::getUserid($friendId);
+
+        $checkRequest = \App\Friend::where(['user_id' => $friend, 'friend_id' => $myId])->count();
+
+        if ($checkRequest === 1) {
+            /**
+             * You are the receiver
+             */
+            return true;
+        } else {
+            /**
+             * You are not the receiver
+             */
+            return false;
+        }
+    }
+
+    public static function checkIfRequestSent($friendId) {
+        $myId = \Auth::user()->id;
+        $friend = \App\User::getUserid($friendId);
+
+        $checkRequestSent = \App\Friend::where(['user_id' => $myId, 'friend_id' => $friend])->orWhere(['user_id' => $friend, 'friend_id' => $myId])->count();
+
+        if ($checkRequestSent === 1) {
+            /**
+             * Request is already sent
+             */
+            return true;
+        } else {
+            /**
+             * Request is not sent yet
+             */
+            return false;
+        }
+    }
+
+    public static function sendFriendRequest($friendId)
+    {
+        $myId = \Auth::user()->id;
+        $myFriend = \App\User::getUserid($friendId);
+
+        $friend = new \App\Friend();
+        $friend->user_id = $myId;
+        $friend->friend_id = $myFriend;
+        $friend->save();
+    }
+
+
+    public static function getFriendCount() {
+        $myId = \Auth::user()->id;
+        
+        $AllFriends = \App\Friend::where(['user_id' => $myId])->orWhere(['friend_id' => $myId])->where(['accepted' => 1]);
+    
+        return $AllFriends->count();
     }
 }

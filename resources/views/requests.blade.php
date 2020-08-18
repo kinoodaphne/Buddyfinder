@@ -6,9 +6,6 @@
 @component('components/nav')
 @endcomponent
 
-@component('components/search')
-@endcomponent
-
 @section('content')
 <div class="container-top container-card">
     <div class="row">
@@ -60,7 +57,7 @@
                 <p class="card-text">Reizen: <b>{{ $sender_travel }}</b></p>
 
                 <a href="/accept-request/{{ $sender_id }}"><button class="btn btn-primary">Accepteer</button></a>
-                <a href="/cancel-request/{{ $sender_id }}"><button class="btn btn-outline-primary">Weiger</button></a>
+                <a href="/cancel-request/{{ $sender_id }}"><button class="btn btn-outline-danger">Weiger</button></a>
             </div>
         </div>
         @endforeach

@@ -13,10 +13,6 @@
     padding-top: 4rem;
 }
 
-body {
-    color: #565656;
-}
-
 .bg-dark {
     background-color: #204051 !important;
 }
@@ -62,7 +58,7 @@ a {
     border: none;
 }
 
-.btn:hover {
+.btn-primary:hover {
     background-color: #0f232e;
 }
 
@@ -71,3 +67,36 @@ a {
     background-color: #0f232e;
     color: #ffffff;
 }
+
+.btn-outline-primary {
+    border: none;
+    color: #204051 !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #e9ecef !important;
+    color: #0f232e;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary:active {
+    border: none;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.personal-info {
+    padding-top: 1em;
+}
+
+@media screen and (min-width: 600px) {
+   .avatar {
+       width: 150px;
+       height: 150px;
+   }
+   .personal-info {
+    padding-top: 0em;
+}
+  }
