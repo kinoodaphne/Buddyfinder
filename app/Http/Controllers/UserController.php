@@ -238,7 +238,7 @@ class UserController extends Controller
             if ($alreadyFriends) {
                 $friendRequest = "Verwijder";
             } else if ($checkRequestSender) {
-                $friendRequest = "Annuleer";
+                $friendRequest = "Verzoek verzonden";
             } else {
                 $friendRequest = "Voeg toe";
             }
@@ -373,9 +373,10 @@ class UserController extends Controller
 
     public function addFriend($userId)
     {
-        $addFriend = \App\Friend::sendFriendRequest($userId);
+        $userCount = \App\User::where('id', $userId)->count();
 
-        if ($addFriend) {
+        if ($userCount > 0) {
+            \App\Friend::sendFriendRequest($userId);
             return redirect()->back();
         } else {
             abort(404);
