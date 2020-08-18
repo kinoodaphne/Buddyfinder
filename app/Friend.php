@@ -116,27 +116,6 @@ class Friend extends Model
         $friend->save();
     }
 
-    // public static function getAllFriends() {
-    //     $myId = \Auth::user()->id;
-        
-    //     $AllFriends = \App\Friend::where(['user_id' => $myId])->orWhere(['friend_id' => $myId])->where(['accepted' => 1]);
-
-    //         $returnData = [];
-    //         foreach ($AllFriends->get() as $row) {
-
-    //             if ($row->user_id == $myId) {
-    //                 $user = \App\User::where(['id' => $row->friend_id]);
-                    
-    //                 array_push($returnData, $user->get());
-    //             } else {
-    //                 $user = \App\User::where(['id' => $row->user_id]);
-
-    //                 array_push($returnData, $user->get());
-    //             }
-    //         }
-    //         return $returnData;
-    //         dd($returnData);
-    // }
 
     public static function getFriendCount() {
         $myId = \Auth::user()->id;
