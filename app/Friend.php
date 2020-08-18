@@ -115,4 +115,11 @@ class Friend extends Model
         $friend->friend_id = $myFriend;
         $friend->save();
     }
+
+    public static function getAllFriends() {
+        $myId = \Auth::user()->id;
+
+        $AllFriends = \App\Friend::where(['user_id' => $myId])->orWhere(['friend_id' => $myId])->where(['accepted' => 1])->count();
+        return $AllFriends;
+    }
 }
