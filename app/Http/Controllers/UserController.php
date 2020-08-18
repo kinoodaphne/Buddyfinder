@@ -119,7 +119,9 @@ class UserController extends Controller
         $year = $request->get('year');
         $study_field = $request->get('study_field');
 
-        $user = \App\User::where('music', 'LIKE', '%' . $music . '%')->orWhere('series', 'LIKE', '%' . $series . '%')->orWhere('gaming', 'LIKE', '%' . $gaming . '%')->orWhere('books', 'LIKE', '%' . $books . '%')->orWhere('travel', 'LIKE', '%' . $travel . '%')->orWhere('year', 'LIKE', '%' . $year . '%')->orWhere('study_field', 'LIKE', '%' . $study_field . '%')->get();
+
+        $user = \App\User::where(['music' => $music])->orWhere(['series' => $series, 'gaming' => $gaming, 'books' => $books, 'travel' => $travel, 'year' => $year, 'study_field' => $study_field])->get();
+
 
         $data = [$music, $series, $gaming, $books, $travel, $year, $study_field];
 
@@ -139,15 +141,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $buddy = \Auth::user()->buddy;
+        if (session('uid') == true) {
+            $buddy = \Auth::user()->buddy;
 
-        $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
+            $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
 
-        if (count($user) > 0) {
-            return view('all-users')->withDetails($user);
+            if (count($user) > 0) {
+                return view('all-users')->withDetails($user);
+            } else {
+                $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
+                return view('all-users');
+            }
         } else {
-            $request->session()->flash('message', 'Geen studenten gevonden. Probeer opnieuw!');
-            return view('all-users');
+            return redirect('/user/login');
         }
     }
 
@@ -223,32 +229,24 @@ class UserController extends Controller
      */
     public function show($id)
     {
+
         if (\Auth::check()) {
             // Check if the user is friend or not
-            $user_id = \Auth::user()->id;
-            $friend_id = \App\User::getUserid($id);
-            $friendCount = \App\Friend::where(['user_id' => $user_id, 'friend_id' => $friend_id])->count();
+            $alreadyFriends = \App\Friend::CheckIfFriends($id);
+            $checkRequestSender = \App\Friend::amIRequestSender($id);
 
-            if ($friendCount > 0) {
-                $friendDetails = \App\Friend::where(['user_id' => $user_id, 'friend_id' => $friend_id])->first();
-                // echo $friendDetails->accepted;
-                // die;
-                if ($friendDetails->accepted == 1) {
-                    echo "Friends";
-                    $friendRequest = "Verwijder";
-                } else {
-                    echo "Request send";
-                    $friendRequest = "Verzoek verzonden";
-                }
+            if ($alreadyFriends) {
+                $friendRequest = "Verwijder";
+            } else if ($checkRequestSender) {
+                $friendRequest = "Annuleer";
             } else {
-                echo "Send request";
-                $friendRequest = 'Voeg toe';
+                $friendRequest = "Voeg toe";
             }
+
         } else {
             $friendRequest = "";
         }
 
-        // $data['user'] = \App\User::where('id', $id)->with('friends')->first();
         $data['user'] = \App\User::where('id', $id)->first();
         return view('students/show', $data)->with(compact('friendRequest'));
     }
@@ -373,18 +371,11 @@ class UserController extends Controller
         return redirect('/user/login');
     }
 
-    public function addFriend($userid)
+    public function addFriend($userId)
     {
-        $userCount = \App\User::where('id', $userid)->count();
+        $addFriend = \App\Friend::sendFriendRequest($userId);
 
-        if ($userCount > 0) {
-            $user_id = \Auth::user()->id;
-            $friend_id = \App\User::getUserid($userid);
-
-            $friend = new \App\Friend;
-            $friend->user_id = $user_id;
-            $friend->friend_id = $friend_id;
-            $friend->save();
+        if ($addFriend) {
             return redirect()->back();
         } else {
             abort(404);
