@@ -21,60 +21,32 @@
     <div class="alert alert-danger">{{ $flash }}</div>
     @endif
     <div class="card-deck row row-table">
-        @foreach($friends as $request)
-        <?php
-        if ($friendsCount > 0) {
-            $sender_id = \App\User::getUserId($request->user_id);
-            $sender_name = \App\User::getUserName($request->user_id);
-            $sender_lastName = \App\User::getUserLastName($request->user_id);
-            $sender_location = \App\User::getUserLocation($request->user_id);
-            $sender_buddy = \App\User::getUserBuddy($request->user_id);
-            $sender_year = \App\User::getUserYear($request->user_id);
-            $sender_study_field = \App\User::getUserStudyField($request->user_id);
-            $sender_profilePicture = \App\User::getUserProfilePicture($request->user_id);
 
-            $sender_music = \App\User::getUserMusic($request->user_id);
-            $sender_books = \App\User::getUserBooks($request->user_id);
-            $sender_gaming = \App\User::getUserGaming($request->user_id);
-            $sender_series = \App\User::getUserSeries($request->user_id);
-            $sender_travel = \App\User::getUserTravel($request->user_id);
-        } else {
-            $sender_id = \App\User::getUserId($request->friend_id);
-            $sender_name = \App\User::getUserName($request->friend_id);
-            $sender_lastName = \App\User::getUserLastName($request->friend_id);
-            $sender_location = \App\User::getUserLocation($request->friend_id);
-            $sender_buddy = \App\User::getUserBuddy($request->friend_id);
-            $sender_year = \App\User::getUserYear($request->friend_id);
-            $sender_study_field = \App\User::getUserStudyField($request->friend_id);
-            $sender_profilePicture = \App\User::getUserProfilePicture($request->friend_id);
-
-            $sender_music = \App\User::getUserMusic($request->friend_id);
-            $sender_books = \App\User::getUserBooks($request->friend_id);
-            $sender_gaming = \App\User::getUserGaming($request->friend_id);
-            $sender_series = \App\User::getUserSeries($request->friend_id);
-            $sender_travel = \App\User::getUserTravel($request->friend_id);
-        }
-            
-        ?>
+        @if ($friendsCount > 0)
+        @foreach ($getAllFriends as $user)
         <div class="col-sm-3">
             <div class="card-container">
-                <img src="/uploads/avatars/{{ $sender_profilePicture }}" class="card-img-top stretchy" alt="...">
+                <img src="/uploads/avatars/{{ $user->profile_picture }}" class="card-img-top rounded" alt="...">
+
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ $sender_name }} {{ $sender_lastName }}</h5>
-                <p class="card-text"><small class="text-muted">{{ $sender_location }}</small></p>
-                <p class="card-text">{{ $sender_buddy }}</p>
-                <p class="card-text">{{ $sender_year }} - {{ $sender_study_field }}</p>
-                <p class="card-text">Muziek: <b>{{ $sender_music }}</b></p>
-                <p class="card-text">Boeken: <b>{{ $sender_books }}</b></p>
-                <p class="card-text">Games: <b>{{ $sender_gaming }}</b></p>
-                <p class="card-text">Series: <b>{{ $sender_series }}</b></p>
-                <p class="card-text">Reizen: <b>{{ $sender_travel }}</b></p>
+                <h5 class="card-title">{{ $user->name }} {{ $user->lastName }}</h5>
+                <p class="card-text"><small class="text-muted">{{ $user->location }}</small></p>
+                <p class="card-text">{{ $user->buddy }}</p>
+                <p class="card-text">{{ $user->year }} - {{ $user->study_field }}</p>
+                <p class="card-text">Muziek: <b>{{ $user->music }}</b></p>
+                <p class="card-text">Boeken: <b>{{ $user->books }}</b></p>
+                <p class="card-text">Games: <b>{{ $user->gaming }}</b></p>
+                <p class="card-text">Series: <b>{{ $user->series }}</b></p>
+                <p class="card-text">Reizen: <b>{{ $user->travel }}</b></p>
 
-                <a href="/users/{{ $sender_id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
+                <a href="/users/{{ $user->id }}"><button class="btn btn-primary">Bekijk profiel</button></a>
             </div>
         </div>
         @endforeach
+        @else
+        <h4>You have no friends!</h4>
+        @endif
     </div>
 </div>
 <hr>
