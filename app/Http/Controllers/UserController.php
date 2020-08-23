@@ -47,9 +47,7 @@ class UserController extends Controller
         $user->save();
 
         $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
-        $name = $data['user']->name;
 
-        $request->session()->put('name', $name);
 
         return redirect('/user/login');
     }
@@ -68,16 +66,6 @@ class UserController extends Controller
             $user = auth()->user();
 
             $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
-
-            $name = $data['user']->name;
-            $uid = $data['user']->id;
-
-            $request->session()->put('name', $name);
-            $request->session()->put('uid', $uid);
-            /**
-             * ->with is the same as flash
-             * return redirect('/')->with('name', $name);
-             *  */
 
             return redirect('/');
         } else {
@@ -141,10 +129,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if (session('uid') == true) {
-            $buddy = \Auth::user()->buddy;
 
-            $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
+        if (\Auth::check()) {
+            $buddy = \Auth::user()->buddy;
+    
+            $user = \DB::table('users')->where('id', '!=', \Auth::user()->id)->where('buddy', '!=', $buddy)->inRandomOrder()->get();
 
             if (count($user) > 0) {
                 return view('all-users')->withDetails($user);
@@ -155,6 +144,7 @@ class UserController extends Controller
         } else {
             return redirect('/user/login');
         }
+
     }
 
     public function allUsers()
