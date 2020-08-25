@@ -330,7 +330,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request)
     {
 
         $validate = $request->validate([
@@ -339,11 +339,14 @@ class UserController extends Controller
             'passwordConfirmation' => 'required',
         ]);
 
-        $user = \App\User::find($id);
+        $user = \Auth::user();
 
-        if ($user) {
             if (\Hash::check($request['oldPassword'], $user->password)) {
-                $user->password = \Hash::make($request->input('newPasword'));
+                if( $request['newPassword'] === $request['passwordConfirmation']){
+                    if( !empty($request['newPassword']) ) {
+                        $user->password = \Hash::make($request['newPassword']);
+                    }
+                }
 
                 $user->save();
                 $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
@@ -352,7 +355,6 @@ class UserController extends Controller
                 $request->session()->flash('message-error', 'Je wachtwoorden komen niet overeen!');
                 return back();
             }
-        }
     }
 
     /**
