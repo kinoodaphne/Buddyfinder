@@ -149,7 +149,7 @@ class UserController extends Controller
 
     public function allUsers()
     {
-        if (session('uid') == true) {
+        if (\Auth::check()) {
             $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->inRandomOrder()->get();
 
             return view('students/index', $data);
@@ -222,20 +222,23 @@ class UserController extends Controller
     {
 
         if (\Auth::check()) {
-            // Check if the user is friend or not
-            $alreadyFriends = \App\Friend::CheckIfFriends($id);
-            $checkRequestSender = \App\Friend::amIRequestSender($id);
+            if ($id != \Auth::user()->id) {
+                // Check if the user is friend or not
+                $alreadyFriends = \App\Friend::CheckIfFriends($id);
+                $checkRequestSender = \App\Friend::amIRequestSender($id);
 
-            if ($alreadyFriends) {
-                $friendRequest = "Verwijder";
-            } else if ($checkRequestSender) {
-                $friendRequest = "Verzoek verzonden";
+                if ($alreadyFriends) {
+                    $friendRequest = "Verwijder";
+                } elseif ($checkRequestSender) {
+                    $friendRequest = "Verzoek verzonden";
+                } else {
+                    $friendRequest = "Voeg toe";
+                }
             } else {
-                $friendRequest = "Voeg toe";
+                $friendRequest = "";
             }
-
         } else {
-            $friendRequest = "";
+            return redirect('/user/login');
         }
 
         $data['user'] = \App\User::where('id', $id)->first();
@@ -250,11 +253,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if ($id != \Auth::user()->id) {
-            return redirect('/');
+        if (\Auth::check()) {
+            if ($id != \Auth::user()->id) {
+                return redirect('/');
+            } else {
+                $data['user'] = \App\User::where('id', $id)->first();
+                return view('students/edit', $data);
+            }
         } else {
-            $data['user'] = \App\User::where('id', $id)->first();
-            return view('students/edit', $data);
+            return redirect('/users/login');
         }
     }
 
@@ -391,10 +398,14 @@ class UserController extends Controller
 
     public function friendsRequests()
     {
-        $user_id = \Auth::user()->id;
-        $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
-
-        return view('requests')->with(compact('friendsRequests'));
+        if (\Auth::check()) {
+            $user_id = \Auth::user()->id;
+            $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
+    
+            return view('requests')->with(compact('friendsRequests'));
+        } else {
+            return redirect('/users/login');
+        }   
     }
 
     public function acceptRequest($sender_id)
@@ -415,17 +426,20 @@ class UserController extends Controller
 
     public function showBuddies()
     {
-        
-        $user_id = \Auth::user()->id;
-        $friendsCount = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->count();
-
-        if ($friendsCount > 0) {
-            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+        if (\Auth::check()) {
+            $user_id = \Auth::user()->id;
+            $friendsCount = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->count();
+    
+            if ($friendsCount > 0) {
+                $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+            } else {
+                $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+            }
+    
+            return view('buddies')->with(compact('friends', 'friendsCount'));
         } else {
-            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
-        }
-
-        return view('buddies')->with(compact('friends', 'friendsCount'));
+            return redirect('/users/login');
+        }       
        
     }
     
