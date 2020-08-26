@@ -43,8 +43,8 @@
                     @endauth
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/{{ session('uid') }}">Bekijk profiel</a>
-                    <a class="dropdown-item" href="/users/edit/{{ session('uid') }}">Bewerk profiel</a>
+                    <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">Bekijk profiel</a>
+                    <a class="dropdown-item" href="/users/edit/{{ Auth::user()->id }}">Bewerk profiel</a>
                     <a class="dropdown-item" href="/user/logout">Log uit</a>
                 </div>
 
