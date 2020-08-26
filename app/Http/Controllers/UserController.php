@@ -35,7 +35,7 @@ class UserController extends Controller
 
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
@@ -200,7 +200,7 @@ class UserController extends Controller
         $user->travel = $request->input('travel');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
@@ -294,7 +294,7 @@ class UserController extends Controller
         $user->year = $request->input('year');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
