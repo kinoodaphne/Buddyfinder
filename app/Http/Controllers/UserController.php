@@ -35,7 +35,7 @@ class UserController extends Controller
 
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
@@ -47,9 +47,7 @@ class UserController extends Controller
         $user->save();
 
         $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
-        $name = $data['user']->name;
 
-        $request->session()->put('name', $name);
 
         return redirect('/user/login');
     }
@@ -68,16 +66,6 @@ class UserController extends Controller
             $user = auth()->user();
 
             $data['user'] = \App\User::find($user->id)->where('id', $user->id)->first();
-
-            $name = $data['user']->name;
-            $uid = $data['user']->id;
-
-            $request->session()->put('name', $name);
-            $request->session()->put('uid', $uid);
-            /**
-             * ->with is the same as flash
-             * return redirect('/')->with('name', $name);
-             *  */
 
             return redirect('/');
         } else {
@@ -141,10 +129,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if (session('uid') == true) {
-            $buddy = \Auth::user()->buddy;
 
-            $user = \DB::table('users')->where('id', '!=', session('uid'))->where('buddy', '!=', $buddy)->inRandomOrder()->get();
+        if (\Auth::check()) {
+            $buddy = \Auth::user()->buddy;
+    
+            $user = \DB::table('users')->where('id', '!=', \Auth::user()->id)->where('buddy', '!=', $buddy)->inRandomOrder()->get();
 
             if (count($user) > 0) {
                 return view('all-users')->withDetails($user);
@@ -155,11 +144,12 @@ class UserController extends Controller
         } else {
             return redirect('/user/login');
         }
+
     }
 
     public function allUsers()
     {
-        if (session('uid') == true) {
+        if (\Auth::check()) {
             $data['users'] = \DB::table('users')->where('id', '!=', session('uid'))->inRandomOrder()->get();
 
             return view('students/index', $data);
@@ -210,7 +200,7 @@ class UserController extends Controller
         $user->travel = $request->input('travel');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
@@ -232,20 +222,23 @@ class UserController extends Controller
     {
 
         if (\Auth::check()) {
-            // Check if the user is friend or not
-            $alreadyFriends = \App\Friend::CheckIfFriends($id);
-            $checkRequestSender = \App\Friend::amIRequestSender($id);
+            if ($id != \Auth::user()->id) {
+                // Check if the user is friend or not
+                $alreadyFriends = \App\Friend::CheckIfFriends($id);
+                $checkRequestSender = \App\Friend::amIRequestSender($id);
 
-            if ($alreadyFriends) {
-                $friendRequest = "Verwijder";
-            } else if ($checkRequestSender) {
-                $friendRequest = "Verzoek verzonden";
+                if ($alreadyFriends) {
+                    $friendRequest = "Verwijder";
+                } elseif ($checkRequestSender) {
+                    $friendRequest = "Verzoek verzonden";
+                } else {
+                    $friendRequest = "Voeg toe";
+                }
             } else {
-                $friendRequest = "Voeg toe";
+                $friendRequest = "";
             }
-
         } else {
-            $friendRequest = "";
+            return redirect('/user/login');
         }
 
         $data['user'] = \App\User::where('id', $id)->first();
@@ -260,11 +253,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if ($id != \Auth::user()->id) {
-            return redirect('/');
+        if (\Auth::check()) {
+            if ($id != \Auth::user()->id) {
+                return redirect('/');
+            } else {
+                $data['user'] = \App\User::where('id', $id)->first();
+                return view('students/edit', $data);
+            }
         } else {
-            $data['user'] = \App\User::where('id', $id)->first();
-            return view('students/edit', $data);
+            return redirect('/users/login');
         }
     }
 
@@ -297,7 +294,7 @@ class UserController extends Controller
         $user->year = $request->input('year');
         $fields = $request->input('inlineRadioOptions');
         if ($fields == 'buddy') {
-            $user->buddy = "Buddy";
+            $user->buddy = "Helper";
         } else {
             $user->buddy = "Searcher";
         }
@@ -333,7 +330,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(Request $request)
     {
 
         $validate = $request->validate([
@@ -342,11 +339,14 @@ class UserController extends Controller
             'passwordConfirmation' => 'required',
         ]);
 
-        $user = \App\User::find($id);
+        $user = \Auth::user();
 
-        if ($user) {
             if (\Hash::check($request['oldPassword'], $user->password)) {
-                $user->password = \Hash::make($request->input('newPasword'));
+                if( $request['newPassword'] === $request['passwordConfirmation']){
+                    if( !empty($request['newPassword']) ) {
+                        $user->password = \Hash::make($request['newPassword']);
+                    }
+                }
 
                 $user->save();
                 $request->session()->flash('message-success', 'Wijzigingen opgeslagen!');
@@ -355,7 +355,6 @@ class UserController extends Controller
                 $request->session()->flash('message-error', 'Je wachtwoorden komen niet overeen!');
                 return back();
             }
-        }
     }
 
     /**
@@ -401,10 +400,14 @@ class UserController extends Controller
 
     public function friendsRequests()
     {
-        $user_id = \Auth::user()->id;
-        $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
-
-        return view('requests')->with(compact('friendsRequests'));
+        if (\Auth::check()) {
+            $user_id = \Auth::user()->id;
+            $friendsRequests = \App\Friend::where(['friend_id' => $user_id, 'accepted' => 0])->get();
+    
+            return view('requests')->with(compact('friendsRequests'));
+        } else {
+            return redirect('/users/login');
+        }   
     }
 
     public function acceptRequest($sender_id)
@@ -425,17 +428,20 @@ class UserController extends Controller
 
     public function showBuddies()
     {
-        
-        $user_id = \Auth::user()->id;
-        $friendsCount = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->count();
-
-        if ($friendsCount > 0) {
-            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+        if (\Auth::check()) {
+            $user_id = \Auth::user()->id;
+            $friendsCount = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->count();
+    
+            if ($friendsCount > 0) {
+                $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+            } else {
+                $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
+            }
+    
+            return view('buddies')->with(compact('friends', 'friendsCount'));
         } else {
-            $friends = \App\Friend::where(['user_id' => $user_id])->orWhere(['friend_id' => $user_id])->where(['accepted' => 1])->get();
-        }
-
-        return view('buddies')->with(compact('friends', 'friendsCount'));
+            return redirect('/users/login');
+        }       
        
     }
     

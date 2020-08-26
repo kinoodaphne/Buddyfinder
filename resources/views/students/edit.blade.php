@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+Edit profile
+@endsection
 
 @component('components/nav')
 @endcomponent

@@ -2,6 +2,9 @@
 {{-- <?php if (isset($status)) : ?>
         <div class="status"><?php echo $status; ?></div>
     <?php endif; ?> --}}
+@section('title')
+Home
+@endsection
 
 @component('components/nav')
 @endcomponent
